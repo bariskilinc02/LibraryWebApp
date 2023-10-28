@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "buBA0YBcKrWsgL4PHhznZHNgR/qR+HbB54zTPJX9r/snqpVmOVitK7xKxMdMuSO7+VsHOtUuttXBLAARZBglAQ==",
+  "dgSpecHash": "DjLXocbKoBp4oIFW9YWk4MstA+IaxqEKEuJ0F+TN1UYap6qJ51F288iuiyhinWQYXuqkPbS82sedrQOF9MqbwQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\LibraryWebApp.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\kilin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\kilin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\kilin\\.nuget\\packages\\bootstrap\\5.3.2\\bootstrap.5.3.2.nupkg.sha512",
+    "C:\\Users\\kilin\\.nuget\\packages\\buildwebcompiler\\1.12.405\\buildwebcompiler.1.12.405.nupkg.sha512",
     "C:\\Users\\kilin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kilin\\.nuget\\packages\\jquery\\3.7.1\\jquery.3.7.1.nupkg.sha512",
     "C:\\Users\\kilin\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.3\\microsoft.aspnet.mvc.5.2.3.nupkg.sha512",

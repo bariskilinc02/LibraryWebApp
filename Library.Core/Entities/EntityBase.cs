@@ -8,10 +8,7 @@ namespace Library.Core.Entities
 {
     public abstract class EntityBase : IEntityBase
     {
-        public EntityBase() {
-        
-        }
-        
+        public int Id { get; set; }
 
     }
 }

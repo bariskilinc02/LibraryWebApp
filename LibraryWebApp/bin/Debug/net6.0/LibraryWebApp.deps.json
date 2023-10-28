@@ -34,6 +34,7 @@
     ".NETCoreApp,Version=v6.0": {
       "LibraryWebApp/1.0.0": {
         "dependencies": {
+          "BuildWebCompiler": "1.12.405",
           "Library.Data": "1.0.0",
           "Library.Service": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.23",
@@ -400,6 +401,7 @@
         }
       },
       "bootstrap/5.3.2": {},
+      "BuildWebCompiler/1.12.405": {},
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -3195,6 +3197,13 @@
       "sha512": "sha512-m0/GEaLwE35B8P1xScFhwAsQi5o6kWPzOVPdGkoFwv+5YjmbgXFPQai71N5APwRCU52ZO4vHYWJ5DYSqKKgivw==",
       "path": "bootstrap/5.3.2",
       "hashPath": "bootstrap.5.3.2.nupkg.sha512"
+    },
+    "BuildWebCompiler/1.12.405": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1l1RK0jV+5QjJM22J5IGHm/EFaB3JN0WorKnLLP6HRnnf5H4sU4IBdBnMwN1OrVmww/3ir8fhbV0ZNGX6Uqn5w==",
+      "path": "buildwebcompiler/1.12.405",
+      "hashPath": "buildwebcompiler.1.12.405.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

@@ -2,9 +2,9 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-
+$("#loginButton").click(function () {
+    $("#loginOrRegisterModal").modal("show"); // Show the modal
+});
 function Fudadw() {
-    $("#loginButton").click(function () {
-        $("#loginOrRegisterModal").modal("show"); // Show the modal
-    });
+  
 }

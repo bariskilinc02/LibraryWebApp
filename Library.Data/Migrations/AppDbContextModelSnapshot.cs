@@ -55,21 +55,21 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "dd3700fb-1c71-4f08-b169-fc13af2a4802",
+                            ConcurrencyStamp = "c36e243c-5012-4585-8c80-a6e140f2e5f9",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "636aadc5-1081-4295-8d8a-72cf30559ff9",
+                            ConcurrencyStamp = "31f7bcea-1aff-4e63-9799-f75d76371e3b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "faec8ac9-93c1-430c-9f44-a40ec1b19d2b",
+                            ConcurrencyStamp = "a99b4a1f-e37f-4504-90d4-c60f88d00026",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -179,7 +179,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "15cd845a-e0fb-4b6f-be12-674ccbb497c9",
+                            ConcurrencyStamp = "44f278fd-f3c9-4b73-a66f-ae3a5ac7b1ce",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Cem",
@@ -187,10 +187,10 @@ namespace Library.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM0on1+88IW7kcFUs7VRJgbKv/Xc2SUlabct5CI7QxMAACipX8XcYlvnNIObBD3myg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAB4utT+zbuypyz45Y2xLC0I2O/GaHwnVjG9LhxSi5UBJvv7EJl2UQb/QycENA2DfQ==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "9b267b43-58e0-476e-976c-53a3943128c8",
+                            SecurityStamp = "6ec52410-b4bb-414b-a9c6-19c316086e10",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -198,7 +198,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "018d62d8-fe87-472c-ac7c-706e1baa46fc",
+                            ConcurrencyStamp = "fd295c87-b3fe-453f-8528-a22187844cd4",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -206,10 +206,10 @@ namespace Library.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO9YMsoKNLWkRlzL+UNXgzlSmdksmO7A0fQJXzMfznDItrsaxRltynh4F42/jOFAiQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF+sL4En/elLlO9liNQU3SW/7wPm++r8HrYfuWsHLn2cMeUpUJgFTONxhvpFZZsP1g==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "25b631ba-0daf-4e64-a72a-8af548a655b4",
+                            SecurityStamp = "e3f233f3-39f3-4223-bf12-e3fdcfd5e3b2",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -308,7 +308,7 @@ namespace Library.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Library.Entity.Entities.LibraryUser", b =>
+            modelBuilder.Entity("Library.Entity.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -316,39 +316,55 @@ namespace Library.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("AccountCreateTime")
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("ISBN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("LastLogin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Language")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PageNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PublicationDate")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("LibraryUsers");
+                    b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Library.Entity.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Library.Entity.Entities.AppRoleClaim", b =>

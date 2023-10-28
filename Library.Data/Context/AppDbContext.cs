@@ -23,7 +23,8 @@ namespace Library.Data.Context
         }
         //Add all your tables here
         //Table classes in Library.Entity library
-        public DbSet<LibraryUser> Users { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

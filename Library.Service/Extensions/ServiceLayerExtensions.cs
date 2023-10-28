@@ -24,7 +24,8 @@ namespace Library.Service.Extensions
 
 
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IBookService, BookService>();
+            //services.AddScoped<ILoginService, LoginService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -1,4 +1,5 @@
-﻿using Library.Service.Services.Abstraction;
+﻿using Library.Service.Services;
+using Library.Service.Services.Abstraction;
 using LibraryWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,26 +12,28 @@ namespace LibraryWebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserService userService;
+        private readonly IBookService bookService;
 
-        public HomeController(ILogger<HomeController> logger, IUserService userService)
+        public HomeController(ILogger<HomeController> logger, IUserService userService, IBookService bookService)
         {
             _logger = logger;
             this.userService = userService;
+            this.bookService = bookService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var users = await userService.GetAllUsersAsync();
-            var currentUser = await userService.GetCurrentUser();
-            if (currentUser != null)
-            {
-                Debug.WriteLine(currentUser.Email);
-            }
-            else
-            {
-                Debug.WriteLine("no user");
-            }
-            return View(users);
+            //var users = await userService.GetAllUsersAsync();
+            //var currentUser = await userService.GetCurrentUser();
+            //if (currentUser != null)
+            //{
+            //    Debug.WriteLine(currentUser.Email);
+            //}
+            //else
+            //{
+            //    Debug.WriteLine("no user");
+            //}
+            return View(/*users*/);
         }
 
         public IActionResult _Authentication(RegisterModel model)
@@ -47,6 +50,15 @@ namespace LibraryWebApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> Search(string keyword, string field)
+        {
+            Enum.TryParse<BookFieldType>(field, out BookFieldType type);
+
+            var books = await bookService.SearchAnyBook(keyword, BookFieldType.All);
+
+            return View("Index",books);
         }
     }
 }

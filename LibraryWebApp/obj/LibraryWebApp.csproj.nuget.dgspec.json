@@ -328,6 +328,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BuildWebCompiler": {
+              "target": "Package",
+              "version": "[1.12.405, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[6.0.23, )"
