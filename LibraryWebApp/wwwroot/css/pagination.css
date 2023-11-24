@@ -1,0 +1,63 @@
+﻿/*.pagination a {
+    border-radius: 5px;
+}
+
+    .pagination a.active {
+        border-radius: 5px;
+    }
+*/
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    /* Sayfa Numaraları */
+    .pagination a {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 4px;
+        text-decoration: none;
+        color: #333; /* Sayfa numaralarının rengi */
+        background-color: #ddd; /* Sayfa numarasının arka plan rengi */
+        border-radius: 4px;
+
+        transition: background-color 0.3s;
+    }
+
+        /* Aktif Sayfa */
+        .pagination a.active {
+            background-color: #fff; /* Aktif sayfanın arka plan rengi */
+            color: #333; /* Aktif sayfanın metin rengi */
+        }
+
+        /* Hover Efekti */
+        .pagination a:hover {
+            background-color: #ddd; /* Hover efekti için arka plan rengi */
+        }
+
+        /* İleri ve Geri Düğmeleri */
+        .pagination a:first-child,
+        .pagination a:last-child {
+            font-weight: bold;
+        }
+
+/* Mobil Uyumlu Tasarım */
+@media (max-width: 768px) {
+    .pagination a {
+        padding: 6px 10px;
+    }
+}
+
+/* İleri ve Geri Oklar (Opsiyonel) */
+.pagination a:first-child::before,
+.pagination a:last-child::after {
+   /* content: "\2039";*/ /* İleri ok (←) */
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.pagination a:last-child::after {
+  /*  content: "\203A";*/ /* Geri ok (→) */
+    margin-left: 5px;
+}

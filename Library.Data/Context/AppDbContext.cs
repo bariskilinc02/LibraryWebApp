@@ -1,4 +1,5 @@
-﻿using Library.Entity.Entities;
+﻿using Library.Entity.DTOs.BookLanguageDTO;
+using Library.Entity.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,6 +26,9 @@ namespace Library.Data.Context
         //Table classes in Library.Entity library
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
+		public DbSet<Author> Authors { get; set; }
+		public DbSet<BookCover> BookCovers { get; set; }
+        public DbSet<BookLanguage> BookLanguages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

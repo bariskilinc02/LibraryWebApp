@@ -1,0 +1,76 @@
+﻿@model AddBookDto
+
+<link rel="stylesheet" href="~/css/addBookView.css" asp-append-version="true" />
+
+<div style="width:500px; " class="w-100 p-4 d-flex justify-content-center pb-4">
+
+    <form asp-controller="Edit" asp-action="SendBook" method="post">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Title">Kitap Başlığı</label>
+                    <input asp-for="Title" placeholder="Book Name..." class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ISBN">ISBN</label>
+                    <input asp-for="ISBN" placeholder="ex: 0123456789012" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PageNumber">Sayfa Sayısı</label>
+                    <input asp-for="PageNumber" placeholder="ex: 300" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId">Kategori</label>
+                    <select asp-for="CategoryId" asp-items="@(new SelectList(Model.AllCategories, "Id", "CategoryName"))" class="form-control">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label asp-for="PublicationDate">Yayın Tarihi</label>
+                    <input asp-for="PublicationDate" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BookLanguageId">Dil</label>
+                    <select asp-for="BookLanguageId" asp-items="@(new SelectList(Model.AllLanguages, "Id", "Language"))" class="form-control">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AuthorId">Yazar</label>
+                    <select asp-for="AuthorId" asp-items="@(new SelectList(Model.AllAuthors, "Id", "AuthorName"))" class="form-control">
+                        <option value="">Seçiniz</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreateDate">Oluşturulma Tarihi</label>
+                    <input asp-for="CreateDate" class="form-control" />
+                </div>
+
+
+            </div>
+
+        </div>
+      
+        @{
+            @if (Model.IsAdded == 1)
+            {
+                <div style="color:green;">Book successfully added</div>
+            }
+            else if (Model.IsAdded == 2)
+            {
+                <div style="color:red;">Make sure you fill in all fields correctly</div>
+            }
+        }
+      
+      
+        <button type="submit" class="btn btn-primary">Kitabı Ekle</button>
+    </form>
+</div>
+

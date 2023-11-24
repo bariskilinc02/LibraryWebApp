@@ -35,7 +35,7 @@ namespace LibraryWebApp.Controllers
                 var user = await userManager.FindByEmailAsync(model.email);
                 if (user != null)
                 {
-                    var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+                    var result = await signInManager.PasswordSignInAsync(user, model.Password, true, false);
 
                     if(result.Succeeded)
                     {

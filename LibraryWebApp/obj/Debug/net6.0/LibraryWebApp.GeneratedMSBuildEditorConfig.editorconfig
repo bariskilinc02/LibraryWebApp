@@ -16,8 +16,32 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\kilin\source\repos\GithubProjects\LibraryWebApp\LibraryWebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Edit/AddBook.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxBZGRCb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Edit/DatabaseProperties.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxEYXRhYmFzZVByb3BlcnRpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Edit/EditBooks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxFZGl0Qm9va3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Shared/Components/AdminNavbarPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5OYXZiYXJQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Shared/Components/DatabasePropertyPopup/CategoryAddPopup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGF0YWJhc2VQcm9wZXJ0eVBvcHVwXENhdGVnb3J5QWRkUG9wdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Shared/Components/DatabasePropertyPopup/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGF0YWJhc2VQcm9wZXJ0eVBvcHVwXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Shared/_Layout.cshtml]

@@ -15,7 +15,7 @@ namespace LibraryWebApp.Controllers
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await userService.GetCurrentUser();
-            ViewBag.CurrentUser = userService.GetCurrentUser();
+            
             return View("Default", user);
         }
     }

@@ -1,0 +1,128 @@
+﻿
+
+
+<div id="popover-content" class="hide">
+
+    <!-- Add New Category -->
+    <div class="modal fade" id="AddNewCategoryPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginOrRegisterModalLabel">Add New Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <form method="post" asp-controller="Edit" asp-action="AddNewCategory">
+
+
+                            <div class="form-group">
+                                <label >New Category</label>
+                                <input class="s_input" name="categoryName" type="text" placeholder="Enter New Category" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Add Category</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion-->
+
+    <!-- Edit New Category -->
+    <div class="modal fade" id="EditExistingCategoty" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginOrRegisterModalLabel">Change Existing Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <form method="post" asp-controller="Edit" asp-action="UpdateExistingCategory">
+
+
+                            <div class="form-group">
+                                <label>Category</label>
+                                <input id="categoryIdInputField" type="hidden" name="id" value="-1">
+                                <input id="categoryField" class="s_input" name="value" type="text" placeholder="Change Category Name" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Change Category</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion-->
+
+
+    <!-- Edit Author-->
+    <div class="modal fade" id="EditExistingAuthor" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginOrRegisterModalLabel">Change Existing Author</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <form method="post" asp-controller="Edit" asp-action="UpdateExistingAuthor">
+
+
+                            <div class="form-group">
+                                <label>Author</label>
+                                <input id="authorIdInputField" type="hidden" name="id" value="-1">
+                                <input id="authorField" class="s_input" name="value" type="text" placeholder="Change Author Name" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Change Category</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion-->
+    <!-- Add New Author-->
+    <div class="modal fade" id="AddNewAuthorPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginOrRegisterModalLabel">Add New Author</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <form method="post" asp-controller="Edit" asp-action="AddNewAuthor">
+
+
+                            <div class="form-group">
+                                <label>Author</label>
+                                <input id="categoryField" class="s_input" name="authorName" type="text" placeholder="New Author" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Add Author</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion-->
+
+</div>

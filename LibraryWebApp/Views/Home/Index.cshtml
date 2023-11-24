@@ -1,18 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model List<Book>
+@model BookListDto
 
 
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/searchBox.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/booktable.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/pagination.css" asp-append-version="true" />
 
 <div id="cover">
-    <form asp-controller="Home" asp-action="Search"  class="s_form" method="get">
+	<form asp-controller="Home" asp-action="SeachByPage" class="s_form" method="get">
         <div class="tb">
             <div class="td">
                 <input class="s_input" name="keyword" type="text" placeholder="Search" required>
+	
             </div>
             <div class="td" id="s-cover">
                 <button class="s_button" type="submit">
@@ -30,13 +32,15 @@
 @{
     if(Model != null)
     {
+
         <div class="table_cover">
-            @foreach (var book in Model)
+            @foreach (var book in Model.books)
             {
+				<h1></h1>
 				<div class="table_item" data-recordid="113778" data-demirbas="0034332" data-eseradi="Şiirler / Cahit Zarifoğlu">
 					@* card-header bg-white py-1 pr-2 *@
 					<div class="table_item_header">
-						<span class="float-left my-0 text-muted"><span class="small text-muted mr-2" title="0034332"><i class="fas fa-book"></i> Kitap [@book.CategoryId]</span>  </span>
+						<span class="float-left my-0 text-muted"><span class="small text-muted mr-2" title="0034332"><i class="fas fa-book"></i> @book.Category.CategoryName</span>  </span>
 						<span class="float-right"> <a href="#" class="aktarim btn btn-sm" data-toggle="tooltip" title="" data-original-title="Aktarım"><i class="fas fa-exchange-alt text-secondary"></i></a><a href="#" class="paylas btn btn-sm" data-toggle="tooltip" title="" data-original-title="Paylaş"><i class="fas fa-share-alt text-secondary"></i></a><a href="#" class="favori btn btn-sm" data-toggle="tooltip" title="" data-original-title="Favori / Kargo"><i class="fas fa-star text-muted"></i></a></span>
 					</div>
 					<div class="card-body">
@@ -59,10 +63,10 @@
 							<div class="orta w-100 pl-2">
 								<h2 class="text-primary mb-0"> <a href="#" class="detayAc pencere" data-toggle="tooltip" title="" data-original-title="Ayrıntı">@book.Title</a></h2>
 
-								<div class="">Zarifoğlu, Cahit</div>
-								<div class="">2012</div>
-								<div class="mb-2"></div>
-								<div class="mb-2"></div>
+								<div class="">Author: @book.Author.AuthorName</div>
+								<div class="">Year: @book.PublicationDate</div>
+								<div class="">Path: @book.BookCover.BookCoverPath</div>
+								<div class="">ISBN: @book.ISBN</div>
 								<div class=""></div>
 							</div><!--orta-->
 							<div class="qrKapsayan text-right d-flex">
@@ -83,7 +87,36 @@
 				</div>
             }
         </div>
+
+		<div class="pagination">
+			@if (Model.totalPage > 1)
+			{
+				@if (Model.currentPage > 1)
+				{
+					<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = 1 })">&laquo;</a>
+				}
+
+				@for (int i = 1; i <= Model.totalPage; i++)
+				{
+					if (i == Model.currentPage)
+					{
+						<a class="active" href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = i })">@i</a>
+					}
+					else
+					{
+						<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = i })">@i</a>
+					}
+				}
+
+				@if (Model.currentPage < Model.totalPage)
+				{
+					<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = Model.totalPage })">&raquo;</a>
+				}
+			}
+		</div>
     }
+
+
 }
 
 

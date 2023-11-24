@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "U+1nvH4BS/mpi/2LalLacILDisWpARxDJEL9kf/vS+g=",
+  "Hash": "mmkQRMCsoCICb1cfnWp4LQ0G4hc+H8a2gbkIqBYCeQ4=",
   "Source": "LibraryWebApp",
   "BasePath": "_content/LibraryWebApp",
   "Mode": "Default",
@@ -799,6 +799,23 @@
       "OriginalItemSpec": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LibraryWebApp.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\addBookView.css",
+      "SourceId": "LibraryWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\",
+      "BasePath": "_content/LibraryWebApp",
+      "RelativePath": "css/addBookView.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\addBookView.css"
+    },
+    {
       "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\booktable.css",
       "SourceId": "LibraryWebApp",
       "SourceType": "Discovered",
@@ -882,6 +899,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\navbar.css"
+    },
+    {
+      "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\pagination.css",
+      "SourceId": "LibraryWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\",
+      "BasePath": "_content/LibraryWebApp",
+      "RelativePath": "css/pagination.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\pagination.css"
     },
     {
       "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\searchBox.css",
@@ -1681,6 +1715,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\bg.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\AdminScript.js",
+      "SourceId": "LibraryWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\",
+      "BasePath": "_content/LibraryWebApp",
+      "RelativePath": "js/AdminScript.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminScript.js"
+    },
+    {
+      "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\DatabasePropertiesPage.js",
+      "SourceId": "LibraryWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\",
+      "BasePath": "_content/LibraryWebApp",
+      "RelativePath": "js/DatabasePropertiesPage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\DatabasePropertiesPage.js"
     },
     {
       "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\navbar.js",

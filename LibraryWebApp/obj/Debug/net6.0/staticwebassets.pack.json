@@ -181,6 +181,10 @@
       "PackagePath": "staticwebassets\\LibraryWebApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\addBookView.css",
+      "PackagePath": "staticwebassets\\css\\addBookView.css"
+    },
+    {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\booktable.css",
       "PackagePath": "staticwebassets\\css\\booktable.css"
     },
@@ -199,6 +203,10 @@
     {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\navbar.css",
       "PackagePath": "staticwebassets\\css\\navbar.css"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\pagination.css",
+      "PackagePath": "staticwebassets\\css\\pagination.css"
     },
     {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\searchBox.css",
@@ -387,6 +395,14 @@
     {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\img\\bg.jpg",
       "PackagePath": "staticwebassets\\img\\bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\AdminScript.js",
+      "PackagePath": "staticwebassets\\js\\AdminScript.js"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\DatabasePropertiesPage.js",
+      "PackagePath": "staticwebassets\\js\\DatabasePropertiesPage.js"
     },
     {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\navbar.js",

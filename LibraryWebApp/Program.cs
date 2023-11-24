@@ -27,22 +27,22 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
-builder.Services.ConfigureApplicationCookie(config =>
+builder.Services.ConfigureApplicationCookie(userConfig =>
 {
-    config.LoginPath = new PathString("/Admin/Auth/Login");
-    config.LogoutPath = new PathString("/Admin/Auth/Logout");
-    config.Cookie = new CookieBuilder
+    userConfig.LoginPath = new PathString("/User/Auth/Login");
+    userConfig.LogoutPath = new PathString("/User/Auth/Logout");
+    userConfig.Cookie = new CookieBuilder
     {
-        Name = "Library",
+        Name = "UserLibrary",
         HttpOnly = true,
         SameSite = SameSiteMode.Strict,
         SecurePolicy = CookieSecurePolicy.SameAsRequest
     };
-    config.SlidingExpiration = true;
-    config.ExpireTimeSpan = TimeSpan.FromDays(7);
-    config.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied");
-
+    userConfig.SlidingExpiration = true;
+    userConfig.ExpireTimeSpan = TimeSpan.FromDays(7);
+    userConfig.AccessDeniedPath = new PathString("/User/Auth/AccessDenied");
 });
+
 
 
 // Add services to the container.

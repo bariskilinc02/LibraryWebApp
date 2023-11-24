@@ -4,6 +4,7 @@ using LibraryWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Library.Entity.DTOs.Book;
 
 namespace LibraryWebApp.Controllers
 {
@@ -59,6 +60,15 @@ namespace LibraryWebApp.Controllers
             var books = await bookService.SearchAnyBook(keyword, BookFieldType.All);
 
             return View("Index",books);
+        }
+
+        public async Task<IActionResult> SeachByPage(string keyword, string field, int currentPage = 1)
+        {
+            Enum.TryParse<BookFieldType>(field, out BookFieldType type);
+
+			BookListDto books = await bookService.SearchBookByPage(keyword, BookFieldType.All, currentPage, 10);
+
+            return View("Index", books);
         }
     }
 }
