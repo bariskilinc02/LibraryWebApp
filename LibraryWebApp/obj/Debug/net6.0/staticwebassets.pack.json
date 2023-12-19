@@ -409,6 +409,10 @@
       "PackagePath": "staticwebassets\\js\\navbar.js"
     },
     {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\searchbar_categoty_events.js",
+      "PackagePath": "staticwebassets\\js\\searchbar_categoty_events.js"
+    },
+    {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

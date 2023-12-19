@@ -11,6 +11,7 @@ namespace Library.Service.Services
         All,
         Title,
         ISBN,
+        PublicationYear
    
     }
 }

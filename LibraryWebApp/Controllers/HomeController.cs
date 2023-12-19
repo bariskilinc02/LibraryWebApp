@@ -62,13 +62,21 @@ namespace LibraryWebApp.Controllers
             return View("Index",books);
         }
 
-        public async Task<IActionResult> SeachByPage(string keyword, string field, int currentPage = 1)
+        public async Task<IActionResult> SeachByPage(string keyword, string selectedCategory, int currentPage = 1)
         {
-            Enum.TryParse<BookFieldType>(field, out BookFieldType type);
+			if (selectedCategory is null or "")
+			{
+				selectedCategory = "0";
+			}
 
-			BookListDto books = await bookService.SearchBookByPage(keyword, BookFieldType.All, currentPage, 10);
+			Enum.TryParse<BookFieldType>(selectedCategory, out BookFieldType type);
 
-            return View("Index", books);
+			BookListDto books = await bookService.SearchBookByPage(keyword, type, currentPage, 10);
+            books.keyword = keyword;
+
+			books.currentSearchCategory = selectedCategory;
+
+			return View("Index", books);
         }
     }
 }

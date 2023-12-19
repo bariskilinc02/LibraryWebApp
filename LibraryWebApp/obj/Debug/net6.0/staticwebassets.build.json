@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mmkQRMCsoCICb1cfnWp4LQ0G4hc+H8a2gbkIqBYCeQ4=",
+  "Hash": "3o6i4Vrz0km3/j8GCrrOl8O027npyQ62a+64ArN0+Gs=",
   "Source": "LibraryWebApp",
   "BasePath": "_content/LibraryWebApp",
   "Mode": "Default",
@@ -1766,6 +1766,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\navbar.js"
+    },
+    {
+      "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\searchbar_categoty_events.js",
+      "SourceId": "LibraryWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\",
+      "BasePath": "_content/LibraryWebApp",
+      "RelativePath": "js/searchbar_categoty_events.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\searchbar_categoty_events.js"
     },
     {
       "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\js\\site.js",

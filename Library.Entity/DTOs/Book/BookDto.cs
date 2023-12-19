@@ -10,6 +10,7 @@ namespace Library.Entity.DTOs.Book
 {
 	public class BookDto
 	{
+		public int Id { get; set; }
 		public string Title { get; set; }
         public int BookLanguageId { get; set; }
         public BookLanguage Language { get; set; }

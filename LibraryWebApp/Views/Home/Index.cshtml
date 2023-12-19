@@ -2,18 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 @model BookListDto
-
-
+<script src="~/js/searchbar_categoty_events.js"></script>
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/searchBox.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/booktable.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/pagination.css" asp-append-version="true" />
 
-<div id="cover">
-	<form asp-controller="Home" asp-action="SeachByPage" class="s_form" method="get">
-        <div class="tb">
+
+	<form asp-controller="Home" asp-action="SeachByPage" class="s_form" method="get" >
+	<div id="cover">
+		<div class="tb" >
             <div class="td">
-                <input class="s_input" name="keyword" type="text" placeholder="Search" required>
+				<input class="s_input" name="keyword" type="text" placeholder="Search" required value=@(Model == null ? "" : Model.keyword)>
 	
             </div>
             <div class="td" id="s-cover">
@@ -22,9 +22,41 @@
                     <span></span>
                 </button>
             </div>
+			
         </div>
+		<div class="category_area" id="category_dropdown_button">
+			@* <label asp-for="currentPage">Kategori</label> *@
+			<div class="dropdown">
+				<input type="hidden" id="selectedCategory" name="selectedCategory" value=@(Model == null ? 0 : Model.currentSearchCategory) />
+				<button type="button" onclick="mytoggleDropdown()" class="category_button form-control">Hepsi</button>
+				<div id="dropdownContent" class="dropdown-content" style="display:inline-grid;">
+					<a class="category-ref" href="#" onclick="selectCategory(0)">Hepsi</a>
+					<a class="category-ref" href="#" onclick="selectCategory(1)">Tarih</a>
+					<a class="category-ref" href="#" onclick="selectCategory(2)">ISBN</a>
+					<a class="category-ref" href="#" onclick="selectCategory(3)">Yıl</a>
+				</div>
+			</div>
+
+			
+		@* 	<select class="category_button" asp-for="currentPage" asp-items="@(new SelectList(new List<SearchCategory> { new SearchCategory { Id = 1, Title = "Tarih" }, new SearchCategory { Id = 2, Title = "Yıl" } }, "Id", "Title"))" class="form-control">
+				<option value="0">Hepsi</option>
+			</select> *@
+		@* 	<div class="dropdown">
+				<button class="category_button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Dropdown button
+				</button>
+				<div class="dropdown-menu category_dropdown_menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</div> *@
+		@* 	<button class="category_button">dsad</button> *@
+		</div>
+	</div>
     </form>
-</div>
+
+
 
 <div id="search_result_cover">
 
@@ -120,6 +152,5 @@
 }
 
 
-  
 
- 
+

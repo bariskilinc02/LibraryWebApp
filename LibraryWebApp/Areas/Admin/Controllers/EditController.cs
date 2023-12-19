@@ -13,6 +13,8 @@ namespace LibraryWebApp.Areas.Admin.Controllers
     [Area("Admin")]
     public class EditController : Controller
     {
+        private readonly int bookCountInPage = 2;
+
         private readonly IUserService userService;
         private readonly IBookService bookService;
 
@@ -26,13 +28,15 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 		#region EditBooks
 		public async Task<IActionResult> EditBooks()
 		{
-			BookListDto books = await bookService.GetAllBooks();
-			return View(books);
+			//BookListDto books = await bookService.GetAllBooks();
+			BookListDto books = await bookService.GetAllBooksByPage(1, bookCountInPage);
+			
+            return View(books);
 		}
 
 		public async Task<IActionResult> SearchInEditBooks(int page = 1)
 		{
-			BookListDto books = await bookService.GetAllBooksByPage(page);
+			BookListDto books = await bookService.GetAllBooksByPage(page, bookCountInPage);
 			return View("EditBooks", books);
 		}
 
@@ -90,11 +94,109 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 
 
 
-        #endregion
+		#endregion
 
-        #region Database Properties
+		#region Edit Book Page
+		public async Task<IActionResult> CustomizeBook(int bookId)
+		{
+			BookDto book = await bookService.GetBookWithId(bookId);
+			AddBookDto addBookDto = new AddBookDto();
 
-        public async Task<IActionResult> DatabaseProperties()
+			addBookDto.Id = book.Id;
+			addBookDto.Title = book.Title;
+			addBookDto.BookLanguageId = book.BookLanguageId;
+			addBookDto.Language = book.Language;
+			addBookDto.ISBN = book.ISBN;
+			addBookDto.PageNumber = book.PageNumber;
+			addBookDto.PublicationDate = book.PublicationDate;
+			addBookDto.CategoryId = book.CategoryId;
+			addBookDto.Category = book.Category;
+			addBookDto.AuthorId = book.AuthorId;
+			addBookDto.Author = book.Author;
+			addBookDto.BookCoverId = book.BookCoverId;
+			addBookDto.BookCover = book.BookCover;
+			addBookDto.CreateDate = book.CreateDate;
+
+            var cats = await bookService.GetAllCategories();
+			var auts = await bookService.GetAllAuthors();
+			var langs = await bookService.GetAllLanguages();
+
+			////addBookDto.CategoryId = 1;
+			//addBookDto.BookCoverId = 1;
+			addBookDto.IsAdded = 0;
+			addBookDto.AllCategories = cats;
+			addBookDto.AllAuthors = auts;
+			addBookDto.AllLanguages = langs;
+
+			//addBookDto.CreateDate = DateTime.Now;
+			//addBookDto.PublicationDate = 2000;
+
+			//return View("CustomizeBook", addBookDto);
+			return View("CustomizeBook", addBookDto);
+		}
+        [HttpPost]
+        public async Task<IActionResult> UpdateBook(AddBookDto customizedBook)
+		{
+			//BookDto book = await bookService.GetBookWithId(bookId);
+			//AddBookDto addBookDto = new AddBookDto();
+			//
+			//addBookDto.Id = book.Id;
+			//addBookDto.Title = book.Title;
+			//addBookDto.BookLanguageId = book.BookLanguageId;
+			//addBookDto.Language = book.Language;
+			//addBookDto.ISBN = book.ISBN;
+			//addBookDto.PageNumber = book.PageNumber;
+			//addBookDto.PublicationDate = book.PublicationDate;
+			//addBookDto.CategoryId = book.CategoryId;
+			//addBookDto.Category = book.Category;
+			//addBookDto.AuthorId = book.AuthorId;
+			//addBookDto.Author = book.Author;
+			//addBookDto.BookCoverId = book.BookCoverId;
+			//addBookDto.BookCover = book.BookCover;
+			//addBookDto.CreateDate = book.CreateDate;
+			//
+			//var cats = await bookService.GetAllCategories();
+			//var auts = await bookService.GetAllAuthors();
+			//var langs = await bookService.GetAllLanguages();
+			//
+			//
+			//addBookDto.IsAdded = 0;
+			//addBookDto.AllCategories = cats;
+			//addBookDto.AllAuthors = auts;
+			//addBookDto.AllLanguages = langs;
+
+			var cats = await bookService.GetAllCategories();
+			var auts = await bookService.GetAllAuthors();
+			var langs = await bookService.GetAllLanguages();
+
+			customizedBook.AllCategories = cats;
+			customizedBook.AllAuthors = auts;
+			customizedBook.AllLanguages = langs;
+            customizedBook.BookCoverId = 1;
+            if (customizedBook.ISBN.Length != 13)
+			{
+				customizedBook.IsAdded = 2;
+			}
+			else
+			{
+				await bookService.UpdateBookAsync(customizedBook);
+				customizedBook.IsAdded = 1;
+			}
+
+			return View("CustomizeBook", customizedBook);
+		}
+
+		public async Task<IActionResult> DeleteBook(int id)
+		{
+			await bookService.DeleteBookAsync(id);
+			return RedirectToAction("EditBooks");
+		}
+
+		#endregion
+
+		#region Database Properties
+
+		public async Task<IActionResult> DatabaseProperties()
         {
             var cats = await bookService.GetAllCategories();
             var auts = await bookService.GetAllAuthors();

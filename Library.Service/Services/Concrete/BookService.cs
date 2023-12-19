@@ -46,10 +46,10 @@ namespace Library.Service.Services.Concrete
 
 		public async Task<BookListDto> GetAllBooksByPage(int currentPage, int pageSize = 10)
 		{
-			List<Book> books = await unitOfWork.GetRepository<Book>().GetAllAsync();
+			List<Book> books = await unitOfWork.GetRepository<Book>().GetAllAsync(null,x => x.Category, x => x.Author, x => x.BookCover);
 			var map = mapper.Map<List<BookDto>>(books);
 
-			int totalPageCount = (int)(books.Count() / pageSize);
+			int totalPageCount = (int)Math.Ceiling(((float)books.Count() / (float)pageSize));
 
 			var boundedBooks = map.OrderBy(a => a.Title).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
 
@@ -77,8 +77,9 @@ namespace Library.Service.Services.Concrete
             {
                 BookFieldType.All => x => x.Title.Contains(keyword) || x.ISBN.Contains(keyword),
                 BookFieldType.Title => x => x.Title.Contains(keyword),
-                BookFieldType.ISBN => x => x.ISBN.Contains(keyword),
-                _ => x => x.Title.Contains(keyword) // Varsayılan olarak Title alanında arama yap
+				BookFieldType.ISBN => x => x.ISBN.Contains(keyword),
+				BookFieldType.PublicationYear => x => x.PublicationDate.ToString().Contains(keyword),
+				_ => x => x.Title.Contains(keyword) // Varsayılan olarak Title alanında arama yap
             };
      
             var books = await unitOfWork.GetRepository<Book>().GetAllAsync(filter, x => x.Category, x=>x.Author, x => x.BookCover);
@@ -148,11 +149,25 @@ namespace Library.Service.Services.Concrete
             await unitOfWork.SaveAsync();
         }
 
-        #endregion
+		public async Task UpdateBookAsync(AddBookDto bookDto)
+		{
+			var newBook = new Book(bookDto.Id,bookDto.Title, bookDto.BookLanguageId, bookDto.ISBN, bookDto.PageNumber, bookDto.PublicationDate, bookDto.CategoryId, bookDto.AuthorId, bookDto.BookCoverId, bookDto.CreateDate);
+			await unitOfWork.GetRepository<Book>().UpdateAsync(newBook);
+			await unitOfWork.SaveAsync();
+		}
 
-        #region Overrides
+		public async Task DeleteBookAsync(int id)
+		{
+			var book = await unitOfWork.GetRepository<Book>().GetById(id);
+			await unitOfWork.GetRepository<Book>().DeleteAsync(book);
+			await unitOfWork.SaveAsync();
+		}
 
-        public async Task ChangeExistCategory(int id, string newValue)
+		#endregion
+
+		#region Overrides
+
+		public async Task ChangeExistCategory(int id, string newValue)
         {
             var category = await unitOfWork.GetRepository<Category>().GetById(id);
             category.CategoryName = newValue;
@@ -183,7 +198,11 @@ namespace Library.Service.Services.Concrete
             await unitOfWork.SaveAsync();
         }
 
-        #endregion
 
-    }
+
+
+
+		#endregion
+
+	}
 }

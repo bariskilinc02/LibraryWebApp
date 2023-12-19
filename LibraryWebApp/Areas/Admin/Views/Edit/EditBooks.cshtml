@@ -1,39 +1,125 @@
 ﻿@model BookListDto
 
+<link rel="stylesheet" href="~/css/booktable.css" asp-append-version="true" />
 
-@if (Model != null)
-{
-	<div>
-		@for (int i = 0; i < Model.books.Count; i++)
-		{
-			<h1>@Model.books[i].Title</h1>
-		}
-	</div>
-
-	<div class="pagination">
+<div style="width:100px; height:50px; margin:auto;">
+	<div class="pagination" style="width:100px; height:50px; align-items:center; vertical-align:central;">
 		@if (Model.totalPage > 1)
 		{
 			@if (Model.currentPage > 1)
 			{
-				<a href="@Url.Action("SearchInEditBooks", new { currentPage = 1 })">&laquo;</a>
+				<a href="@Url.Action("SearchInEditBooks", new { page = 1 })">&laquo;</a>
 			}
 
 			@for (int i = 1; i <= Model.totalPage; i++)
 			{
 				if (i == Model.currentPage)
 				{
-					<a class="active" href="@Url.Action("SearchInEditBooks", new {currentPage = i })">@i</a>
+					<a class="active" href="@Url.Action("SearchInEditBooks", new {page = i })">[@i]</a>
 				}
 				else
 				{
-					<a href="@Url.Action("SearchInEditBooks", new {  currentPage = i })">@i</a>
+					<a href="@Url.Action("SearchInEditBooks", new {  page = i })">@i</a>
 				}
 			}
 
 			@if (Model.currentPage < Model.totalPage)
 			{
-				<a href="@Url.Action("SearchInEditBooks", new { currentPage = Model.totalPage })">&raquo;</a>
+				<a href="@Url.Action("SearchInEditBooks", new { page = Model.totalPage })">&raquo;</a>
 			}
 		}
+	</div>
+</div>
+
+@if (Model != null)
+{
+
+
+	<div style="width:900px; margin:auto;">
+		<div class="table_cover">
+			@foreach (var book in Model.books)
+			{
+				<h1></h1>
+				<div style="position:relative;" class="table_item" data-recordid="113778" data-demirbas="0034332" data-eseradi="Şiirler / Cahit Zarifoğlu">
+				
+					<div class="table_item_header">
+						<span class="float-left my-0 text-muted"><span class="small text-muted mr-2" title="0034332"><i class="fas fa-book"></i> @book.Category.CategoryName</span>  </span>
+					</div>
+					<div class="card-body">
+						<div class="d-flex">
+							<div class="gorsel liste mr-2">
+								<a href="#" class="detayAc pencere d-block">
+									<div class="flip-box">
+										<div class="flip-box-inner">
+											<div class="flip-box-front">
+												<img src="https://yordam.medeniyet.edu.tr/veriler/cokluortam/cokluortam/A/A/C/E/D/Untitled.bmp" alt="9789754730012" class="img-fluid">
+											</div>
+											<div class="flip-box-back">
+			
+											</div>
+										</div>
+									</div>
+								</a>
+
+							</div>
+							<div class="orta w-100 pl-2">
+								<h2 class="text-primary mb-0"> <a href="#" class="detayAc pencere" data-toggle="tooltip" title="" data-original-title="Ayrıntı">@book.Title</a></h2>
+
+								<div class="">Author: @book.Author.AuthorName</div>
+								<div class="">Year: @book.PublicationDate</div>
+								<div class="">Path: @book.BookCover.BookCoverPath</div>
+								<div class="">ISBN: @book.ISBN</div>
+								<div class=""></div>
+							</div><!--orta-->
+							<div class="qrKapsayan text-right d-flex">
+								<div class="qr"><canvas width="60" height="60"></canvas></div>
+							</div>
+						</div><!--row-->
+					</div><!--card-body-->
+					<div class="aktarimKapsayan"></div>
+					<div style="position:absolute;right:20px; bottom:20px;">
+						<a class="btn btn-primary" style="width:100px;" href="@Url.Action("CustomizeBook", new {bookId=book.Id})">Edit</a>
+					</div>
+
+					<div style="position:absolute;right:20px; top:20px;">
+						<a class="btn-outline-danger" style="width:100px;" href="@Url.Action("DeleteBook", new {id=book.Id})">Delete Book</a>
+					</div>
+				</div>
+			}
+		</div>
+
+
+		@* @for (int i = 0; i < Model.books.Count; i++)
+		{
+			<h1>@Model.books[i].Title</h1>
+		} *@
+	</div>
+	<div style="width:100px; height:100px; margin:auto;">
+		<div class="pagination" style="width:100px; height:50px; align-items:center; vertical-align:central;">
+		@if (Model.totalPage > 1)
+		{
+			@if (Model.currentPage > 1)
+			{
+				<a href="@Url.Action("SearchInEditBooks", new { page = 1 })">&laquo;</a>
+			}
+
+			@for (int i = 1; i <= Model.totalPage; i++)
+			{
+				if (i == Model.currentPage)
+				{
+					<a class="active" href="@Url.Action("SearchInEditBooks", new {page = i })">[@i]</a>
+				}
+				else
+				{
+					<a href="@Url.Action("SearchInEditBooks", new {  page = i })">@i</a>
+				}
+			}
+
+			@if (Model.currentPage < Model.totalPage)
+			{
+				<a href="@Url.Action("SearchInEditBooks", new { page = Model.totalPage })">&raquo;</a>
+			}
+		}
+	</div>
 	</div>
 }

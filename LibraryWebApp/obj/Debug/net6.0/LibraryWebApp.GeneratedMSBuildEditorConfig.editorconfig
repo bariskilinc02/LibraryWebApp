@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxBZGRCb29rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Edit/CustomizeBook.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxDdXN0b21pemVCb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Edit/DatabaseProperties.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxEYXRhYmFzZVByb3BlcnRpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

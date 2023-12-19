@@ -25,7 +25,21 @@ namespace Library.Entity.Entities
             CreateDate = createDate;
         }
 
-        public string Title { get; set; }
+		public Book(int id, string title, int bookLanguageId, string ıSBN, string pageNumber, int publicationDate, int categoryId, int authorId, int bookCoverId, DateTime? createDate)
+		{
+            Id = id;
+			Title = title;
+			BookLanguageId = bookLanguageId;
+			ISBN = ıSBN;
+			PageNumber = pageNumber;
+			PublicationDate = publicationDate;
+			CategoryId = categoryId;
+			AuthorId = authorId;
+			BookCoverId = bookCoverId;
+			CreateDate = createDate;
+		}
+
+		public string Title { get; set; }
         public int BookLanguageId { get; set; }
         public BookLanguage Language { get; set; }
         public string ISBN { get; set; }
