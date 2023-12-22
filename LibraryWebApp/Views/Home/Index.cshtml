@@ -28,19 +28,65 @@
 			@* <label asp-for="currentPage">Kategori</label> *@
 			<div class="dropdown">
 				<input type="hidden" id="selectedCategory" name="selectedCategory" value=@(Model == null ? 0 : Model.currentSearchCategory) />
-				<button type="button" onclick="mytoggleDropdown()" class="category_button form-control">Hepsi</button>
+				<button type="button" onclick="mytoggleDropdown()" class="category_button form-control">Filtrele</button>
 				<div id="dropdownContent" class="dropdown-content" style="display:inline-grid;">
-					<a class="category-ref" href="#" onclick="selectCategory(0)">Hepsi</a>
+					<div class="category-ref">
+						<div class="category-div">
+							<div class="category-text">
+								Yazar:
+							</div>
+							<select asp-for="yazar"  class="category-input" asp-items="@(new SelectList(Model.AllAuthors, "Id", "AuthorName"))">
+								<option value="0">Hepsi</option>
+							</select>
+						</div>
+						<div name="yazar" value="" class="category-div">
+							<div class="category-text">
+								Yayın Tarihi:
+							</div>
+							<input name="tarih" value="@Model.tarih"  class="category-input" />
+						</div>
+						<div class="category-div">
+							<div class="category-text">
+								ISBN:
+							</div>
+							<input name="isbn" value="@(Model.isbn)" class="category-input" />
+						</div>
+						<div class="category-div">
+							<div class="category-text">
+								Dil:
+							</div>
+							<select asp-for="language_id"  class="category-input" asp-items="@(new SelectList(Model.AllLanguages, "Id", "Language"))">
+								<option value ="0">Hepsi</option>
+							</select>
+						</div>
+						<div class="category-div">
+							<div class="category-text">
+								Kategori:
+							</div>
+							<select asp-for="category_id" class="category-input" asp-items="@(new SelectList(Model.AllCategories, "Id", "CategoryName"))">
+								<option value="0">Hepsi</option>
+							</select>
+						</div>
+						
+					</div>
+					@* <select asp-for="AuthorId" asp-items="@(new SelectList(Model.AllAuthors, "Id", "AuthorName"))" class="form-control">
+						<option value="">Seçiniz</option>
+					</select> *@
+
+					@* <a class="category-ref" href="#" onclick="selectCategory(0)">Hepsi</a>
 					<a class="category-ref" href="#" onclick="selectCategory(1)">Tarih</a>
 					<a class="category-ref" href="#" onclick="selectCategory(2)">ISBN</a>
-					<a class="category-ref" href="#" onclick="selectCategory(3)">Yıl</a>
+					<a class="category-ref" href="#" onclick="selectCategory(3)">Yıl</a> *@
 				</div>
 			</div>
 
-			
-		@* 	<select class="category_button" asp-for="currentPage" asp-items="@(new SelectList(new List<SearchCategory> { new SearchCategory { Id = 1, Title = "Tarih" }, new SearchCategory { Id = 2, Title = "Yıl" } }, "Id", "Title"))" class="form-control">
-				<option value="0">Hepsi</option>
-			</select> *@
+
+			@* 	   
+			<label asp-for="AuthorId">Yazar</label>
+			<select asp-for="AuthorId" asp-items="@(new SelectList(Model.AllAuthors, "Id", "AuthorName"))" class="form-control">
+			<option value="">Seçiniz</option>
+			</select>
+			*@
 		@* 	<div class="dropdown">
 				<button class="category_button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Dropdown button
@@ -62,7 +108,7 @@
 
 </div>
 @{
-    if(Model != null)
+    if(Model != null && Model.books != null)
     {
 
         <div class="table_cover">
@@ -82,11 +128,10 @@
 									<div class="flip-box">
 										<div class="flip-box-inner">
 											<div class="flip-box-front">
-												<img src="https://yordam.medeniyet.edu.tr/veriler/cokluortam/cokluortam/A/A/C/E/D/Untitled.bmp" alt="9789754730012" class="img-fluid">
+												<img src="~/bookcovers/default.bmp" class="img-fluid"/>
+												
 											</div>
-											<div class="flip-box-back">
-												<img src="A/A/C/E/D/Untitled.jpg" alt="9789754730012" class="img-fluid">
-											</div>
+									
 										</div>
 									</div>
 								</a>
@@ -97,7 +142,7 @@
 
 								<div class="">Author: @book.Author.AuthorName</div>
 								<div class="">Year: @book.PublicationDate</div>
-								<div class="">Path: @book.BookCover.BookCoverPath</div>
+								
 								<div class="">ISBN: @book.ISBN</div>
 								<div class=""></div>
 							</div><!--orta-->
@@ -108,6 +153,7 @@
 						</div><!--row-->
 					</div><!--card-body-->
 					<div class="aktarimKapsayan"></div>
+					<!--
 					<div class="card-footer py-1 bg-white">
 						<div class="islem">
 							<div class="kutuphane float-left text-muted small"><span><span>Kütüphane</span> <b>İstanbul Medeniyet Üniversitesi Ziraat Bankası Kütüphanesi</b></span><span><span>Bölüm</span> <b>Merkez Kütüphane</b></span><span><span>Oda</span> <b>Okuma Salonu (Zemin Kat)</b></span><span><span>Tür</span> <b>Kitap</b></span><span><span>Alt Biçim</span> <b>Şiir</b></span><span><span>Şekil</span> <b>Basılı</b></span><span><span>Ortam</span> <b>Kağıt</b></span><span><span>Sınıflama yer bilgisi</span> <b>PL 248 .Z37 Ş55</b></span><span><span>Durum</span> <b><span class="text-success">Rafta</span></b></span><span><span>Kopya</span> <b>k.1</b></span></div>
@@ -115,11 +161,11 @@
 							<a href="#" class="detayAc satirIci float-right  small" data-toggle="tooltip" title="" data-original-title=""><i class="fas fa-arrow-down"></i> Ayrıntı</a>
 						</div>
 						<div class="satirIciKapsayan"></div>
-					</div><!--card-footer-->
+					</div>card-footer-->
 				</div>
             }
         </div>
-
+		// <div class="">Path: @book.BookCover.BookCoverPath</div>
 		<div class="pagination">
 			@if (Model.totalPage > 1)
 			{
@@ -132,22 +178,25 @@
 				{
 					if (i == Model.currentPage)
 					{
-						<a class="active" href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = i })">@i</a>
+						<a class="active" href="@Url.Action("SeachByPage", new { keyword = Model.keyword, yazar=Model.yazar,tarih= Model.tarih, isbn=Model.isbn ,language_id=Model.language_id ,category_id=Model.category_id , currentPage = i })">@i</a>
 					}
 					else
 					{
-						<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = i })">@i</a>
+						<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword,  yazar=Model.yazar,tarih= Model.tarih, isbn=Model.isbn ,language_id=Model.language_id ,category_id=Model.category_id ,currentPage = i })">@i</a>
 					}
 				}
 
 				@if (Model.currentPage < Model.totalPage)
 				{
-					<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword, currentPage = Model.totalPage })">&raquo;</a>
+					<a href="@Url.Action("SeachByPage", new { keyword = Model.keyword, yazar=Model.yazar,tarih= Model.tarih, isbn=Model.isbn ,language_id=Model.language_id ,category_id=Model.category_id , currentPage = Model.totalPage })">&raquo;</a>
 				}
 			}
 		</div>
-    }
-
+	}
+	else
+	{
+		<div style="height:180px;"></div>
+	}
 
 }
 

@@ -219,9 +219,9 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    left: 0px; /*min width 10 artarsa bu 10 azalır*/
+    left: -150px; /*min width 10 artarsa bu 10 azalır*/
     background-color: #f1f1f1;
-    min-width: 200px;
+    min-width: 350px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px;
     z-index: 1;
@@ -254,21 +254,41 @@ body {
 
 .category-ref {
     color: black;
-    height: 30px;
+    
     font-size: 17px;
     text-align: left;
     text-indent: 20px;
     text-decoration: none !important;
     transition: 0.2s ease all;
+    display:grid;
 }
 
-    .category-ref:hover {
+
+
+/*    .category-ref:hover {
         color: black;
         background-color: #e5e5e5;
         border-radius: 20px;
         transition: 0.2s ease all;
-    }
+    }*/
+.category-div {
+    display: inline-flex;
+    margin-top:8px;
+}
 
+.category-text {
+    width: 40%;
+}
+
+.category-input {
+    position:relative;
+    margin-left: 5px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    width: 60%;
+
+}
 /*.dropdown:hover .dropdown-content {
     display: block;
 }*/

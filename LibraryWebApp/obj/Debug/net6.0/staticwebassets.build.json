@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3o6i4Vrz0km3/j8GCrrOl8O027npyQ62a+64ArN0+Gs=",
+  "Hash": "FJbK5K2WEFWOy6tlRw2y5gJgztDiYPYaMzgvTiiHl6w=",
   "Source": "LibraryWebApp",
   "BasePath": "_content/LibraryWebApp",
   "Mode": "Default",
@@ -797,6 +797,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LibraryWebApp.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\default.bmp",
+      "SourceId": "LibraryWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\",
+      "BasePath": "_content/LibraryWebApp",
+      "RelativePath": "bookcovers/default.bmp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bookcovers\\default.bmp"
     },
     {
       "Identity": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\addBookView.css",

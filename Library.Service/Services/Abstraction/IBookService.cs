@@ -18,7 +18,8 @@ namespace Library.Service.Services.Abstraction
 		Task<BookDto> GetBookWithId(int id);
         Task<List<BookDto>> SearchAnyBook(string keyword, BookFieldType bookFieldType);
         Task<BookListDto> SearchBookByPage(string keyword, BookFieldType bookFieldType, int currentPage, int pageSize = 10);
-        Task CreateBookAsync(AddBookDto bookDto);
+		Task<BookListDto> SearchBookByPageLast(string keyword,string yazar, string tarih, string isbn, string language_id, string category_id, int currentPage, int pageSize = 10);
+		Task CreateBookAsync(AddBookDto bookDto);
 		Task UpdateBookAsync(AddBookDto bookDto);
 		Task DeleteBookAsync(int id);
 		#region Helper

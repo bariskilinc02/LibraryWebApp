@@ -103,7 +103,68 @@ namespace Library.Service.Services.Concrete
                 totalPage = totalPageCount
 			};
         }
-        /*
+
+		public async Task<BookListDto> SearchBookByPageLast(string keyword,string yazar, string tarih, string isbn, string language_id, string category_id, int currentPage = 1, int pageSize = 10)
+		{
+			bool isYazar = int.TryParse(yazar, out var newYazarId);
+			bool isIsbn = !(isbn == "" || isbn == null);
+			bool isTarih = int.TryParse(tarih, out var newTarihId);
+			bool isCategory = int.TryParse(category_id, out var newCategoryId);
+			bool isLanguage = int.TryParse(language_id, out var newLanguageId);
+
+      
+            if (newCategoryId == 0)
+            {
+                isCategory = false;
+
+			}
+
+			if (newLanguageId == 0)
+			{
+				isLanguage = false;
+
+			}
+
+			if (newYazarId == 0)
+			{
+				isYazar = false;
+
+			}
+
+
+			Expression<Func<Book, bool>> filter = x => 
+            (x.Title.Contains(keyword))
+            && (isIsbn ? x.ISBN.Contains(isbn) : !x.ISBN.Equals(null))
+			&& (isYazar ? x.AuthorId.Equals(newYazarId) : !x.AuthorId.Equals(null))
+			&& (isTarih ? x.PublicationDate.Equals(newTarihId) : !x.PublicationDate.Equals(null))
+			&& (isLanguage ? x.BookLanguageId.Equals(newLanguageId) : !x.BookLanguageId.Equals(null))
+            && (isCategory ? x.CategoryId.Equals(newCategoryId) : !x.CategoryId.Equals(null)); 
+            
+            
+            /*x.CategoryId.Equals(int.Parse(category_id));*/
+
+
+			//   && x.ISBN.Contains(isbn)
+			//&& x.PublicationDate.Equals(int.Parse(tarih))
+
+			var mybooks = await unitOfWork.GetRepository<Book>().GetAllAsync(filter, x => x.Category, x => x.Author, x => x.BookCover);
+			var map = mapper.Map<List<BookDto>>(mybooks);
+
+
+            var books = map;
+			var boundedBooks = books.OrderBy(a => a.Title).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
+			int totalPageCount = (int)(books.Count() / pageSize);
+
+			return new BookListDto
+			{
+				keyword = keyword,
+				books = boundedBooks,
+				currentPage = currentPage,
+				totalPage = totalPageCount
+			};
+		}
+		/*
         public async Task<BookListDto> SearchByPagingAsync(string keyword, BookFieldType bookFieldType, int currentPage = 1, int pageSize = 10)
         {
             var books = await SearchAnyBook(keyword, bookFieldType);
@@ -116,9 +177,9 @@ namespace Library.Service.Services.Concrete
         }
         */
 
-        #region Helpers
+		#region Helpers
 
-        public async Task<List<CategoryDto>> GetAllCategories()
+		public async Task<List<CategoryDto>> GetAllCategories()
         {
             var categories = await unitOfWork.GetRepository<Category>().GetAllAsync();
             var map = mapper.Map<List<CategoryDto>>(categories);

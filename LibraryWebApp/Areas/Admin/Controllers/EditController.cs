@@ -30,14 +30,19 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 		{
 			//BookListDto books = await bookService.GetAllBooks();
 			BookListDto books = await bookService.GetAllBooksByPage(1, bookCountInPage);
-			
+
+            ViewBag.pageName = "editbooks";
+
             return View(books);
 		}
 
 		public async Task<IActionResult> SearchInEditBooks(int page = 1)
 		{
 			BookListDto books = await bookService.GetAllBooksByPage(page, bookCountInPage);
-			return View("EditBooks", books);
+
+            ViewBag.pageName = "editbooks";
+
+            return View("EditBooks", books);
 		}
 
         #endregion
@@ -61,6 +66,8 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 
 			addBookDto.CreateDate = DateTime.Now;
 			addBookDto.PublicationDate = 2000;
+
+            ViewBag.pageName = "addbook";
 
             return View("AddBook",addBookDto);
 		}
@@ -88,6 +95,7 @@ namespace LibraryWebApp.Areas.Admin.Controllers
                 await bookService.CreateBookAsync(book);
                 book.IsAdded = 1;
             }
+            ViewBag.pageName = "addbook";
 
             return View("AddBook", book);
         }
@@ -128,11 +136,13 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 			addBookDto.AllAuthors = auts;
 			addBookDto.AllLanguages = langs;
 
-			//addBookDto.CreateDate = DateTime.Now;
-			//addBookDto.PublicationDate = 2000;
+            //addBookDto.CreateDate = DateTime.Now;
+            //addBookDto.PublicationDate = 2000;
 
-			//return View("CustomizeBook", addBookDto);
-			return View("CustomizeBook", addBookDto);
+            //return View("CustomizeBook", addBookDto);
+
+            ViewBag.pageName = "editbooks";
+            return View("CustomizeBook", addBookDto);
 		}
         [HttpPost]
         public async Task<IActionResult> UpdateBook(AddBookDto customizedBook)
@@ -183,13 +193,16 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 				customizedBook.IsAdded = 1;
 			}
 
-			return View("CustomizeBook", customizedBook);
+            ViewBag.pageName = "editbooks";
+            return View("CustomizeBook", customizedBook);
 		}
 
 		public async Task<IActionResult> DeleteBook(int id)
 		{
 			await bookService.DeleteBookAsync(id);
-			return RedirectToAction("EditBooks");
+
+            ViewBag.pageName = "editbooks";
+            return RedirectToAction("EditBooks");
 		}
 
 		#endregion
@@ -209,7 +222,7 @@ namespace LibraryWebApp.Areas.Admin.Controllers
             propertiesDto.AllBookLanguages = langs;
             propertiesDto.DatabasePropertiesEditDto = new DatabasePropertiesEditDto();
             propertiesDto.DatabasePropertiesEditDto.testText = "dwadwad";
-
+            ViewBag.pageName = "databaseProperties";
             return View(propertiesDto);
 
         }
@@ -222,7 +235,7 @@ namespace LibraryWebApp.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateExistingCategory(int id, string value)
         {
             await bookService.ChangeExistCategory(id, value);
-
+            ViewBag.pageName = "databaseProperties";
             return RedirectToAction("DatabaseProperties");
         }
 
@@ -230,7 +243,7 @@ namespace LibraryWebApp.Areas.Admin.Controllers
         public async Task<IActionResult> AddNewCategory(string categoryName)
         {
             await bookService.AddNewCategory(categoryName);
-
+            ViewBag.pageName = "databaseProperties";
             return RedirectToAction("DatabaseProperties");
         }
 
@@ -239,7 +252,7 @@ namespace LibraryWebApp.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateExistingAuthor(int id, string value)
         {
             await bookService.ChangeExistAuthor(id, value);
-
+            ViewBag.pageName = "databaseProperties";
             return RedirectToAction("DatabaseProperties");
         }
 
@@ -247,7 +260,7 @@ namespace LibraryWebApp.Areas.Admin.Controllers
         public async Task<IActionResult> AddNewAuthor(string authorName)
         {
             await bookService.AddNewAuthor(authorName);
-
+            ViewBag.pageName = "databaseProperties";
             return RedirectToAction("DatabaseProperties");
         }
 

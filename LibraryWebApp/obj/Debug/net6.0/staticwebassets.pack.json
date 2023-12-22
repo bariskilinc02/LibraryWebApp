@@ -181,6 +181,10 @@
       "PackagePath": "staticwebassets\\LibraryWebApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\default.bmp",
+      "PackagePath": "staticwebassets\\bookcovers\\default.bmp"
+    },
+    {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\addBookView.css",
       "PackagePath": "staticwebassets\\css\\addBookView.css"
     },

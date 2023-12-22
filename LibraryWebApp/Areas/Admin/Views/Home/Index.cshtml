@@ -45,10 +45,51 @@
 }
 else
 {
-    @Model.FirstName
+    <div class="admin-page">
+        @Html.ActionLink("Edit Books", "EditBooks", "Edit", null, new { @class = "nav-link admin-button" })
+        @Html.ActionLink("Add Book", "AddBook", "Edit", null, new { @class = "nav-link admin-button" })
+        @Html.ActionLink("Edit Properties", "DatabaseProperties", "Edit", null, new { @class = "nav-link admin-button" })
+    </div>
+  
+
 }
 
+<style>
+    .admin-page{
+        margin:auto;
+        display:flex;
+        justify-content:center;
+        height:600px;
+        align-items:center;
+    }
 
+    .admin-button{
+        width:300px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        text-align: center;
+        background-color: white;
+        border-radius: 25px;
+        box-shadow: -5px -5px 15px 0 #eaeaea, 5px 5px 15px 0px #1d0dca4b;
+        margin-bottom: 20px;
+        margin-right:30px;
+        font-size:25px;
+        font-weight: lighter;
+
+        color:gray;
+        transition: all ease-in-out 0.2s;
+    }
+
+    .admin-button:hover{
+            box-shadow: -10px -10px 35px 0 #eaeaea, 15px 15px 55px 0px #1d0dca4b;
+            font-size: 30px;
+            font-weight: normal;
+            transition:all ease-in-out 0.2s;
+    }
+
+</style>
 
 
 @* @model List<LibraryUser>  *@

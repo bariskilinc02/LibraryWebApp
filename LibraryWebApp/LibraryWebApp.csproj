@@ -34,6 +34,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Auth\" />
+    <Folder Include="wwwroot\bookcovers\" />
   </ItemGroup>
 
 </Project>

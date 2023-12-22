@@ -1,64 +1,69 @@
 ﻿@model DatabasePropertiesDto
 
 <script src="~/js/DatabasePropertiesPage.js"></script>
+<div style="display:flex; justify-content:center; margin-top:30px;">
 
-<div style="max-width:500px;">
-
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" style="width:100px">Id</th>
-                <th scope="col" style="width:100px">Category Name</th>
-                <th scope="col" style="width:100px">Edit</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Model.AllCategories.Count; i++)
-            {
+    <div style="max-width:500px; margin-right:55px;">
+        Categories
+        <div class="nav-item navbar_button_outline member_dropdown_button" style="width:auto; float:right;">
+            <a onclick="onClickedAddNewCategory()" class="navbar_button_content navbar_button member_dropdown_button_text expander " style="float:right; ">Add New</a>
+        </div>
+        <table class="table" style="margin-top:20px;">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="row">@Model.AllCategories[i].Id</th>
-                    <td>@Model.AllCategories[i].CategoryName</td>
-                    <td><a onclick="onClickedEditCategory(@Model.AllCategories[i].Id,  '@Model.AllCategories[i].CategoryName')">Edit</a></td>
+                    <th scope="col" style="width:100px">Id</th>
+                    <th scope="col" style="width:100px">Category Name</th>
+                    <th scope="col" style="width:100px">Edit</th>
+
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.AllCategories.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@Model.AllCategories[i].Id</th>
+                        <td>@Model.AllCategories[i].CategoryName</td>
+                        <td><a onclick="onClickedEditCategory(@Model.AllCategories[i].Id,  '@Model.AllCategories[i].CategoryName')">Edit</a></td>
+                    </tr>
+                }
             </tbody>
-    </table>
+        </table>
 
-    <div class="nav-item navbar_button_outline member_dropdown_button" style="width:auto; float:right;">
-        <a onclick="onClickedAddNewCategory()" class="navbar_button_content navbar_button member_dropdown_button_text expander " style="float:right; ">Add New</a>
+      
+
     </div>
 
-</div>
-
-<div style="max-width:500px;">
-
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" style="width:100px">Id</th>
-                <th scope="col" style="width:100px">Author Name</th>
-                <th scope="col" style="width:100px">Edit</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Model.AllAuthors.Count; i++)
-            {
+    <div style="max-width:500px; margin-right:55px;">
+        Authors
+        <div class="nav-item navbar_button_outline member_dropdown_button" style="width:auto; float:right;">
+            <a onclick="onClickedAddNewAuthor()" class="navbar_button_content navbar_button member_dropdown_button_text expander " style="float:right; ">Add New</a>
+        </div>
+        <table class="table" style="margin-top:20px;">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="row">@Model.AllAuthors[i].Id</th>
-                    <td>@Model.AllAuthors[i].AuthorName</td>
-                    <td><a onclick="onClickedEditAuthor(@Model.AllAuthors[i].Id,  '@Model.AllAuthors[i].AuthorName')">Edit</a></td>
+                    <th scope="col" style="width:100px">Id</th>
+                    <th scope="col" style="width:100px">Author Name</th>
+                    <th scope="col" style="width:100px">Edit</th>
+
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.AllAuthors.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@Model.AllAuthors[i].Id</th>
+                        <td>@Model.AllAuthors[i].AuthorName</td>
+                        <td><a onclick="onClickedEditAuthor(@Model.AllAuthors[i].Id,  '@Model.AllAuthors[i].AuthorName')">Edit</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-    <div class="nav-item navbar_button_outline member_dropdown_button" style="width:auto; float:right;">
-        <a onclick="onClickedAddNewAuthor()" class="navbar_button_content navbar_button member_dropdown_button_text expander " style="float:right; ">Add New</a>
+   
+
     </div>
-
 </div>
+
 
 
 
