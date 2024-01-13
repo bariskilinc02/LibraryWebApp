@@ -24,6 +24,8 @@ namespace Library.Entity.DTOs.Book
 		public int BookCoverId { get; set; }
 		public BookCover BookCover { get; set; }
 		public Nullable<System.DateTime> CreateDate { get; set; }
-	
-	}
+        public string? Floor { get; set; }
+        public string? LocationInformation { get; set; }
+
+    }
 }

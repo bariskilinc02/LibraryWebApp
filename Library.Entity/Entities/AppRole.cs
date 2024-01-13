@@ -9,6 +9,6 @@ namespace Library.Entity.Entities
 {
     public class AppRole : IdentityRole<int>
     {
-
+        public ICollection<AppUser> AppUsers { get; set; }
     }
 }

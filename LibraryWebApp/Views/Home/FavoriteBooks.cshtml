@@ -1,0 +1,75 @@
+﻿@model FavoriteBookList
+
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/searchBox.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/booktable.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/pagination.css" asp-append-version="true" />
+
+
+<div id="search_result_cover">
+	<div class="table_cover">
+		<div style="margin-top:-80px;position:initial !important;text-shadow: 0px 4px 4px #ffffff7a, 0 0 0 #e4be36, 0px 4px 4px #f99e0030;" class="library_header">My Favorite Books</div>
+
+		@if (Model.books.Count == 0)
+		{
+			<div style="margin-bottom:350px;">There are no books here</div>
+		}
+@foreach (var book in Model.books)
+{
+	<h1></h1>
+	<div class="table_item" data-recordid="113778" data-demirbas="0034332" data-eseradi="Şiirler / Cahit Zarifoğlu">
+		@* card-header bg-white py-1 pr-2 *@
+		<div class="table_item_header">
+			<span class="float-left my-0 text-muted"><span class="small text-muted mr-2" title="0034332"><i class="fas fa-book"></i> @book.Book.Category.CategoryName</span>  </span>
+			<span class="float-right">
+
+				<a href="@Url.Action("DeleteFromFavoriteBooks", new { id = book.Id})" class="favori btn btn-sm" data-toggle="tooltip" title="" data-original-title="Favori / Kargo">
+					<i class="fas fa-close text-muted"></i>
+				</a>
+			</span>
+		</div>
+		<div class="card-body">
+			<div class="d-flex">
+				<div class="gorsel liste mr-2">
+					<a href="#" class="detayAc pencere d-block">
+						<div class="flip-box">
+							<div class="flip-box-inner">
+								<div class="flip-box-front">
+									<img src="~/bookcovers/@(book.Book.BookCover.BookCoverPath).jpeg" class="img-fluid" />
+
+								</div>
+
+							</div>
+						</div>
+					</a>
+
+				</div>
+				<div class="orta w-100 pl-2">
+					<h2 class="text-primary mb-0"> <a href="#" class="detayAc pencere" data-toggle="tooltip" title="" data-original-title="Ayrıntı">@book.Book.Title</a></h2>
+
+					<div class="">Author: @book.Book.Author.AuthorName</div>
+					<div class="">Year: @book.Book.PublicationDate</div>
+
+					<div class="">ISBN: @book.Book.ISBN</div>
+					<div class=""></div>
+				</div><!--orta-->
+				<div class="qrKapsayan text-right d-flex">
+
+					<div class="qr"><canvas width="60" height="60"></canvas></div>
+				</div>
+			</div><!--row-->
+		</div><!--card-body-->
+		<div class="aktarimKapsayan"></div>
+		<!--
+		<div class="card-footer py-1 bg-white">
+			<div class="islem">
+				<div class="kutuphane float-left text-muted small"><span><span>Kütüphane</span> <b>İstanbul Medeniyet Üniversitesi Ziraat Bankası Kütüphanesi</b></span><span><span>Bölüm</span> <b>Merkez Kütüphane</b></span><span><span>Oda</span> <b>Okuma Salonu (Zemin Kat)</b></span><span><span>Tür</span> <b>Kitap</b></span><span><span>Alt Biçim</span> <b>Şiir</b></span><span><span>Şekil</span> <b>Basılı</b></span><span><span>Ortam</span> <b>Kağıt</b></span><span><span>Sınıflama yer bilgisi</span> <b>PL 248 .Z37 Ş55</b></span><span><span>Durum</span> <b><span class="text-success">Rafta</span></b></span><span><span>Kopya</span> <b>k.1</b></span></div>
+				<div class="float-right satirIciKapat d-none"><button type="button" class="close"><span class="text-danger">✕</span> </button></div>
+				<a href="#" class="detayAc satirIci float-right  small" data-toggle="tooltip" title="" data-original-title=""><i class="fas fa-arrow-down"></i> Ayrıntı</a>
+			</div>
+			<div class="satirIciKapsayan"></div>
+		</div>card-footer-->
+	</div>
+}
+	</div>
+</div>

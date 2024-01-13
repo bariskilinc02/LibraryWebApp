@@ -124,6 +124,8 @@ namespace LibraryWebApp.Areas.Admin.Controllers
 			addBookDto.BookCoverId = book.BookCoverId;
 			addBookDto.BookCover = book.BookCover;
 			addBookDto.CreateDate = book.CreateDate;
+			addBookDto.Floor = book.Floor;
+			addBookDto.LocationInformation = book.LocationInformation;
 
             var cats = await bookService.GetAllCategories();
 			var auts = await bookService.GetAllAuthors();

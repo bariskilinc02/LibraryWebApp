@@ -76,10 +76,27 @@ namespace LibraryWebApp.Controllers
             return RedirectToAction("Index", "Home");
             //return PartialView("_LoginPartial", model);
         }
+        private string CreatePasswordHash(AppUser user, string password)
+        {
+            var passwordHasher = new PasswordHasher<AppUser>();
+            return passwordHasher.HashPassword(user, password);
+        }
+        public async Task<ActionResult> Register(RegisterModel model) {
 
-        public ActionResult Register() {
+            AppUser newUser = new AppUser();
+            newUser.UserName = model.Email;
+            newUser.NormalizedEmail = model.Email;
+            newUser.NormalizedUserName = model.Email;
+            newUser.Email = model.Email;
+            newUser.PasswordHash = CreatePasswordHash(newUser, model.Password);
+            newUser.FirstName = model.Name;
+            newUser.LastName = model.Surname;
+            newUser.PhoneNumber = model.Phone;
+            newUser.AppRoleId = 3;
 
-            return NoContent();
+            var result = await userManager.CreateAsync(newUser, model.Password);
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -88,6 +105,7 @@ namespace LibraryWebApp.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
-        } 
+        }
+
     }
 }

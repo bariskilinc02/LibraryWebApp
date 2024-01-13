@@ -181,8 +181,36 @@
       "PackagePath": "staticwebassets\\LibraryWebApp.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\default.bmp",
-      "PackagePath": "staticwebassets\\bookcovers\\default.bmp"
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\default.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\default.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\insanneyas.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\insanneyas.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\itiraf.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\itiraf.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\misery.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\misery.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\pmba.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\pmba.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\savasbaris.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\savasbaris.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\seytan.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\seytan.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\bookcovers\\stoagunluk.jpeg",
+      "PackagePath": "staticwebassets\\bookcovers\\stoagunluk.jpeg"
     },
     {
       "Id": "C:\\Users\\kilin\\source\\repos\\GithubProjects\\LibraryWebApp\\LibraryWebApp\\wwwroot\\css\\addBookView.css",

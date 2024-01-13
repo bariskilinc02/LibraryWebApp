@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="Title">Kitap Başlığı</label>
+                    <label asp-for="Title">Book Title</label>
                     <input asp-for="Title" placeholder="Book Name..." class="form-control" />
                 </div>
 
@@ -18,41 +18,49 @@
                     <input asp-for="ISBN" placeholder="ex: 0123456789012" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="PageNumber">Sayfa Sayısı</label>
+                    <label asp-for="PageNumber">Page Count</label>
                     <input asp-for="PageNumber" placeholder="ex: 300" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="CategoryId">Kategori</label>
+                    <label asp-for="CategoryId">Category</label>
                     <select asp-for="CategoryId" asp-items="@(new SelectList(Model.AllCategories, "Id", "CategoryName"))" class="form-control">
                         <option value="">Seçiniz</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Floor">Floor</label>
+                    <input asp-for="Floor" placeholder="ex: Floor X" class="form-control" />
                 </div>
             </div>
 
             <div class="col-md-6">
 
                 <div class="form-group">
-                    <label asp-for="PublicationDate">Yayın Tarihi</label>
+                    <label asp-for="PublicationDate">Publication Date</label>
                     <input asp-for="PublicationDate" class="form-control" />
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="BookLanguageId">Dil</label>
+                    <label asp-for="BookLanguageId">Language</label>
                     <select asp-for="BookLanguageId" asp-items="@(new SelectList(Model.AllLanguages, "Id", "Language"))" class="form-control">
                         <option value="">Seçiniz</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="AuthorId">Yazar</label>
+                    <label asp-for="AuthorId">Author</label>
                     <select asp-for="AuthorId" asp-items="@(new SelectList(Model.AllAuthors, "Id", "AuthorName"))" class="form-control">
                         <option value="">Seçiniz</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CreateDate">Oluşturulma Tarihi</label>
+                    <label asp-for="CreateDate">Date Created</label>
                     <input asp-for="CreateDate" class="form-control" />
                 </div>
-                
+                <div class="form-group">
+                    <label asp-for="LocationInformation">Classification Location Information</label>
+                    <input asp-for="LocationInformation" placeholder="ex: PZ K56" class="form-control" />
+                </div>
 
             </div>
 
@@ -70,7 +78,7 @@
         }
       
       
-        <button type="submit" class="btn btn-primary">Kitabı Ekle</button>
+        <button type="submit" class="btn btn-primary">Add Book</button>
     </form>
 </div>
 

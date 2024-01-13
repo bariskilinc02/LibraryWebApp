@@ -40,6 +40,13 @@ namespace LibraryWebApp.Controllers
 			var auts = await bookService.GetAllAuthors();
 			var langs = await bookService.GetAllLanguages();
 
+            if (userService.GetCurrentUser().Result != null)
+            {
+                books.Authanticated = true;
+
+			}
+          
+
 			books.AllCategories = cats;
 			books.AllAuthors = auts;
 			books.AllLanguages = langs;
@@ -88,7 +95,7 @@ namespace LibraryWebApp.Controllers
 
 			Enum.TryParse<BookFieldType>(selectedCategory, out BookFieldType type);
 
-			BookListDto books = await bookService.SearchBookByPageLast(keyword, yazar, tarih, isbn, language_id, category_id, currentPage, 1);
+			BookListDto books = await bookService.SearchBookByPageLast(keyword, yazar, tarih, isbn, language_id, category_id, currentPage, 4);
 			//BookListDto books = await bookService.SearchBookByPage(keyword, type, currentPage, 10);
 			books.keyword = keyword;
 
@@ -108,7 +115,37 @@ namespace LibraryWebApp.Controllers
             books.language_id = language_id;
             books.category_id = category_id;
 
+			if (userService.GetCurrentUser().Result != null)
+			{
+				books.Authanticated = true;
+
+			}
+
+
 			return View("Index", books);
         }
-    }
+   
+        public async Task<IActionResult> FavoriteBooks()
+        {
+            var books = await bookService.GetAllFavoriteBooksWithId(userService.GetCurrentUser().Result.Id);
+            FavoriteBookList booklist = new FavoriteBookList();
+            booklist.books = books;
+            return View(booklist);
+        }
+
+        public async Task<IActionResult> AddMyFavoriteBooks(int bookId, string keyword, string selectedCategory, string yazar, string tarih, string isbn, string language_id, string category_id, int currentPage = 1)
+        {
+            var userId = userService.GetCurrentUser().Result.Id;
+            await bookService.AddBookFavoriteBooks(bookId, userId);
+
+			return RedirectToAction("SeachByPage", "Home", new { keyword = keyword, selectedCategory = selectedCategory, yazar=yazar, tarih = tarih, isbn = isbn, language_id= language_id, category_id = category_id, currentPage = currentPage });
+        }
+
+		public async Task<IActionResult> DeleteFromFavoriteBooks(int id)
+        {
+            await bookService.DeleteBookFavoriteBooks(id,2);
+
+			return RedirectToAction("FavoriteBooks", "Home");
+        }
+	}
 }

@@ -13,7 +13,7 @@
 	<div id="cover">
 		<div class="tb" >
             <div class="td">
-				<input class="s_input" name="keyword" type="text" placeholder="Search" required value=@(Model == null ? "" : Model.keyword)>
+				<input class="s_input" name="keyword" type="text" placeholder="Search"  value=@(Model == null ? "" : Model.keyword)>
 	
             </div>
             <div class="td" id="s-cover">
@@ -28,20 +28,20 @@
 			@* <label asp-for="currentPage">Kategori</label> *@
 			<div class="dropdown">
 				<input type="hidden" id="selectedCategory" name="selectedCategory" value=@(Model == null ? 0 : Model.currentSearchCategory) />
-				<button type="button" onclick="mytoggleDropdown()" class="category_button form-control">Filtrele</button>
+				<button type="button" onclick="mytoggleDropdown()" class="category_button form-control">Filter</button>
 				<div id="dropdownContent" class="dropdown-content" style="display:inline-grid;">
 					<div class="category-ref">
 						<div class="category-div">
 							<div class="category-text">
-								Yazar:
+								Author:
 							</div>
 							<select asp-for="yazar"  class="category-input" asp-items="@(new SelectList(Model.AllAuthors, "Id", "AuthorName"))">
-								<option value="0">Hepsi</option>
+								<option value="0">All</option>
 							</select>
 						</div>
 						<div name="yazar" value="" class="category-div">
 							<div class="category-text">
-								Yayın Tarihi:
+								Publication Date:
 							</div>
 							<input name="tarih" value="@Model.tarih"  class="category-input" />
 						</div>
@@ -53,18 +53,18 @@
 						</div>
 						<div class="category-div">
 							<div class="category-text">
-								Dil:
+								Language:
 							</div>
 							<select asp-for="language_id"  class="category-input" asp-items="@(new SelectList(Model.AllLanguages, "Id", "Language"))">
-								<option value ="0">Hepsi</option>
+								<option value="0">All</option>
 							</select>
 						</div>
 						<div class="category-div">
 							<div class="category-text">
-								Kategori:
+								Category:
 							</div>
 							<select asp-for="category_id" class="category-input" asp-items="@(new SelectList(Model.AllCategories, "Id", "CategoryName"))">
-								<option value="0">Hepsi</option>
+								<option value="0">All</option>
 							</select>
 						</div>
 						
@@ -103,7 +103,12 @@
     </form>
 
 
-
+@* <a href="#" class="aktarim btn btn-sm" data-toggle="tooltip" title="" data-original-title="Aktarım">
+	<i class="fas fa-exchange-alt text-secondary"></i>
+</a>
+<a href="#" class="paylas btn btn-sm" data-toggle="tooltip" title="" data-original-title="Paylaş">
+	<i class="fas fa-share-alt text-secondary"></i>
+</a> *@
 <div id="search_result_cover">
 
 </div>
@@ -119,7 +124,15 @@
 					@* card-header bg-white py-1 pr-2 *@
 					<div class="table_item_header">
 						<span class="float-left my-0 text-muted"><span class="small text-muted mr-2" title="0034332"><i class="fas fa-book"></i> @book.Category.CategoryName</span>  </span>
-						<span class="float-right"> <a href="#" class="aktarim btn btn-sm" data-toggle="tooltip" title="" data-original-title="Aktarım"><i class="fas fa-exchange-alt text-secondary"></i></a><a href="#" class="paylas btn btn-sm" data-toggle="tooltip" title="" data-original-title="Paylaş"><i class="fas fa-share-alt text-secondary"></i></a><a href="#" class="favori btn btn-sm" data-toggle="tooltip" title="" data-original-title="Favori / Kargo"><i class="fas fa-star text-muted"></i></a></span>
+						<span class="float-right">
+							@if (Model.Authanticated)
+							{
+								<a href="@Url.Action("AddMyFavoriteBooks", new { bookId = book.Id, keyword = Model.keyword, yazar=Model.yazar,tarih= Model.tarih, isbn=Model.isbn ,language_id=Model.language_id ,category_id=Model.category_id , currentPage = Model.totalPage})" class="favori btn btn-sm" data-toggle="tooltip" title="" data-original-title="Favori / Kargo">
+									<i class="fas fa-star text-muted"></i>
+								</a>
+							}
+							
+						</span>
 					</div>
 					<div class="card-body">
 						<div class="d-flex">
@@ -128,8 +141,7 @@
 									<div class="flip-box">
 										<div class="flip-box-inner">
 											<div class="flip-box-front">
-												<img src="~/bookcovers/default.bmp" class="img-fluid"/>
-												
+												<img src="~/bookcovers/@(book.BookCover.BookCoverPath).jpeg" class="img-fluid"/>
 											</div>
 									
 										</div>
@@ -153,15 +165,35 @@
 						</div><!--row-->
 					</div><!--card-body-->
 					<div class="aktarimKapsayan"></div>
-					<!--
-					<div class="card-footer py-1 bg-white">
+					<!--orta
+					class="card-footer py-1 bg-white"
+					-->
+					<div style="height:40px; padding-left:20px;padding-right:20px;">
 						<div class="islem">
-							<div class="kutuphane float-left text-muted small"><span><span>Kütüphane</span> <b>İstanbul Medeniyet Üniversitesi Ziraat Bankası Kütüphanesi</b></span><span><span>Bölüm</span> <b>Merkez Kütüphane</b></span><span><span>Oda</span> <b>Okuma Salonu (Zemin Kat)</b></span><span><span>Tür</span> <b>Kitap</b></span><span><span>Alt Biçim</span> <b>Şiir</b></span><span><span>Şekil</span> <b>Basılı</b></span><span><span>Ortam</span> <b>Kağıt</b></span><span><span>Sınıflama yer bilgisi</span> <b>PL 248 .Z37 Ş55</b></span><span><span>Durum</span> <b><span class="text-success">Rafta</span></b></span><span><span>Kopya</span> <b>k.1</b></span></div>
+							<div class="kutuphane float-left text-muted small">
+								<span><span>Kat</span> <b>@book.Floor </b></span>|
+								<span><span>Bölüm</span> <b>Medeniyet Kütüphane </b></span>|
+								<span><span>Sınıflama yer bilgisi</span> <b>@book.LocationInformation</b></span>
+								<!--others
+						
+								<span><span>Bölüm</span> <b>Merkez Kütüphane</b></span>
+								<span><span>Oda</span> <b>Okuma Salonu (Zemin Kat)</b></span>
+								<span><span>Tür</span> <b>Kitap</b></span>
+								<span><span>Alt Biçim</span> <b>Şiir</b></span>
+								<span><span>Şekil</span> <b>Basılı</b></span>
+								<span><span>Ortam</span> <b>Kağıt</b></span>
+								<span><span>Sınıflama yer bilgisi</span> <b>PL 248 .Z37 Ş55</b></span>
+								<span><span>Durum</span> <b><span class="text-success">Rafta</span></b></span>
+								<span><span>Kopya</span> <b>k.1</b></span>
+								-->
+							</div>
+							<!--others
 							<div class="float-right satirIciKapat d-none"><button type="button" class="close"><span class="text-danger">✕</span> </button></div>
 							<a href="#" class="detayAc satirIci float-right  small" data-toggle="tooltip" title="" data-original-title=""><i class="fas fa-arrow-down"></i> Ayrıntı</a>
-						</div>
+							-->
+							</div>
 						<div class="satirIciKapsayan"></div>
-					</div>card-footer-->
+					</div>
 				</div>
             }
         </div>

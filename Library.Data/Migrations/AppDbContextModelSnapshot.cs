@@ -55,21 +55,21 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "4e42d37c-5d9e-446e-bbe0-ab7f21911637",
+                            ConcurrencyStamp = "646562c7-bcb6-43d3-bb37-bb83b11373b6",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "fe6b83c7-3053-4712-9f54-316cb713dc9f",
+                            ConcurrencyStamp = "926433f1-f5bf-42f8-9644-5dd84eb11012",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "23b9f470-1a33-4d79-b788-7d751a9726e9",
+                            ConcurrencyStamp = "47a77eff-63aa-45c4-ab43-5ba05f937167",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -108,6 +108,9 @@ namespace Library.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AppRoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -164,6 +167,8 @@ namespace Library.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppRoleId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -179,7 +184,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ca68b0bf-216d-4928-bb70-3c9d9dc3bb1f",
+                            ConcurrencyStamp = "b706a2c0-5640-4f9e-93b2-b82829115823",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Cem",
@@ -187,10 +192,10 @@ namespace Library.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHqS8FXLp4Pp3qRWSedPKtoSrWbBeei+CXZt2kHedhTxRj/9UelNPr5WwmdJToBUWg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKWw/iI8K/W/OF/krcJAjyy/X8YyzSaEgCN+g77lf5gHKskhf80laCQkxpCN4WMW0g==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "3d0a8844-14a5-4a63-8240-c8e5f4bcaf1d",
+                            SecurityStamp = "8cf5ab64-809a-444e-9c5d-21701286481f",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -198,7 +203,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9150eda6-9a42-4b6c-946d-be143a549d36",
+                            ConcurrencyStamp = "4c1aea75-8dc9-4ac3-9227-09d95f65813c",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -206,10 +211,10 @@ namespace Library.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJEnm7BYTUFm/Ez3JJuDkpBEn6k8IYH3wTUwOWnfX2CggY+VWvdai2L47dNn0KZWpw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ7jIr94mpdfZ9gJnf9mf6l0jvTUdYiGbsJVAC8EF+KoCI4yDtzV9Oql8MslghqQmQ==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b8fa23e0-1df9-458e-a63c-b1772946a684",
+                            SecurityStamp = "dfc140ab-399d-4a14-8db8-907c01537bf2",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -348,8 +353,14 @@ namespace Library.Data.Migrations
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Floor")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ISBN")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationInformation")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PageNumber")
@@ -427,6 +438,29 @@ namespace Library.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Library.Entity.Entities.FavoriteBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteBooks");
+                });
+
             modelBuilder.Entity("Library.Entity.Entities.AppRoleClaim", b =>
                 {
                     b.HasOne("Library.Entity.Entities.AppRole", null)
@@ -434,6 +468,15 @@ namespace Library.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Library.Entity.Entities.AppUser", b =>
+                {
+                    b.HasOne("Library.Entity.Entities.AppRole", "AppRole")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("AppRoleId");
+
+                    b.Navigation("AppRole");
                 });
 
             modelBuilder.Entity("Library.Entity.Entities.AppUserClaim", b =>
@@ -511,6 +554,30 @@ namespace Library.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Library.Entity.Entities.FavoriteBook", b =>
+                {
+                    b.HasOne("Library.Entity.Entities.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Library.Entity.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Library.Entity.Entities.AppRole", b =>
+                {
+                    b.Navigation("AppUsers");
                 });
 
             modelBuilder.Entity("Library.Entity.Entities.Author", b =>

@@ -29,8 +29,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 
 builder.Services.ConfigureApplicationCookie(userConfig =>
 {
-    userConfig.LoginPath = new PathString("/User/Auth/Login");
-    userConfig.LogoutPath = new PathString("/User/Auth/Logout");
+    //userConfig.LoginPath = new PathString("/User/Auth/Login");
+    //userConfig.LogoutPath = new PathString("/User/Auth/Logout");
     userConfig.Cookie = new CookieBuilder
     {
         Name = "UserLibrary",
@@ -82,7 +82,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
-    endpoints.MapDefaultControllerRoute();
+    //endpoints.MapDefaultControllerRoute();
 
 });
 

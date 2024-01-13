@@ -1,5 +1,6 @@
 ﻿using Library.Entity.Entities;
 using Library.Service.Services.Abstraction;
+using LibraryWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -71,5 +72,52 @@ namespace LibraryWebApp.Areas.Admin.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult> LogoutAdmin()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+            //return View();
+            //return View("~/Areas/Admin/Views/Home/Index.cshtml");
+            //return RedirectToAction("Index", "Home", new { area = "Admin" });
+            //return RedirectToAction("Index");
+            //return View();
+            //return View("~/Areas/booking/checkout.cshtml");
+            // return View("Index", "Home", new { area = "Admin" });
+            // return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<ActionResult> AddNewUser()
+        {
+            return View(new RegisterModel());
+        }
+
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+
+            AppUser newUser = new AppUser();
+            newUser.UserName = model.Email;
+            newUser.NormalizedEmail = model.Email;
+            newUser.NormalizedUserName = model.Email;
+            newUser.Email = model.Email;
+            newUser.PasswordHash = CreatePasswordHash(newUser, model.Password);
+            newUser.FirstName = model.Name;
+            newUser.LastName = model.Surname;
+            newUser.PhoneNumber = model.Phone;
+            newUser.AppRoleId = model.RoleId;
+
+            var result = await userManager.CreateAsync(newUser, model.Password);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        private string CreatePasswordHash(AppUser user, string password)
+        {
+            var passwordHasher = new PasswordHasher<AppUser>();
+            return passwordHasher.HashPassword(user, password);
+        }
     }
+
+
 }

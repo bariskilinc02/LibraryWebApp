@@ -46,5 +46,9 @@ namespace Library.Service.Services.Abstraction
         Task AddNewAuthor(string newValue);
 
         #endregion
-    }
+
+        Task<List<FavoriteBook>> GetAllFavoriteBooksWithId(int id);
+        Task AddBookFavoriteBooks(int bookId, int userId);
+		Task DeleteBookFavoriteBooks(int bookId, int userId);
+	}
 }

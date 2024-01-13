@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRWRpdFxFZGl0Qm9va3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Home/AddNewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxBZGROZXdVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Views/Home/FavoriteBooks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYXZvcml0ZUJvb2tzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kilin/source/repos/GithubProjects/LibraryWebApp/LibraryWebApp/Views/Home/Index.cshtml]

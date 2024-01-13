@@ -15,7 +15,7 @@
 <script src="~/js/AdminScript.js"></script>
 @{
 
-    @if (Model?.Email == null || string.IsNullOrEmpty(Model.Email))
+    @if (Model?.Email == null || string.IsNullOrEmpty(Model.Email) || Model?.AppRoleId == 3)
     {
 
     }
@@ -36,16 +36,45 @@
                         <li class="nav-item  @(activePage == "databaseProperties" ? "active" : "")">
                             @Html.ActionLink("Database Properties", "DatabaseProperties", "Edit", null, new { @class = "nav-link" })
                         </li>
-                       
+                
                     </ul>
                    
                 </div>
             </div>
+
+
+            <i class="fa-solid fa-user fa-1x"></i>
+            <div style="color:white; margin-right:5px;  margin-left:5px; white-space: nowrap;">
+                @Model.FirstName
+            </div>
+
+            @if (Model.AppRoleId == 1)
+            {
+
+                @Html.ActionLink("Add User", "AddNewUser", "Home", null, new { @class = "nav-link left-button-style"})
+            }
+           
+            @Html.ActionLink("Logout", "LogoutAdmin", "Home", null, new { @class = "nav-link left-button-style  " })
+      
         </nav>
     }
 }
+<style>
+    .left-button-style{
+        margin-left:5px;
+        background-color: #0000004d;
+        color:white;
+        white-space: nowrap;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+    .left-button-style:hover {
+        color: white;
+
+    }
 
 
 
+</style>
 <script src="~/js/navbar.js" asp-append-version="true"></script>
 @* <script src="~/js/site.js"></script> *@

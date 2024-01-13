@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWebApp", "LibraryWebApp\LibraryWebApp.csproj", "{0D4C2135-C09B-4AEF-81CC-49F0265C0B02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWebApp", "LibraryWebApp\LibraryWebApp.csproj", "{0D4C2135-C09B-4AEF-81CC-49F0265C0B02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Entity", "Library.Entity\Library.Entity.csproj", "{41997392-C854-4635-8B69-96C1FD52E8DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Entity", "Library.Entity\Library.Entity.csproj", "{41997392-C854-4635-8B69-96C1FD52E8DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Data", "Library.Data\Library.Data.csproj", "{6156A484-358F-4089-8F4C-8CD99B4C7FE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Data", "Library.Data\Library.Data.csproj", "{6156A484-358F-4089-8F4C-8CD99B4C7FE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Service", "Library.Service\Library.Service.csproj", "{A99BC180-3709-414B-AF2D-965F05164D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Service", "Library.Service\Library.Service.csproj", "{A99BC180-3709-414B-AF2D-965F05164D95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Core", "Library.Core\Library.Core.csproj", "{4D49E14B-74CC-4959-B9D3-2188E25F6991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Core", "Library.Core\Library.Core.csproj", "{4D49E14B-74CC-4959-B9D3-2188E25F6991}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

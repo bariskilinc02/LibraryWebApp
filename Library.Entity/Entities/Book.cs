@@ -1,6 +1,7 @@
 ﻿using Library.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Library.Entity.Entities
         public Book() 
         {
         }
-        public Book(string title, int bookLanguageId, string ıSBN, string pageNumber, int publicationDate, int categoryId, int authorId, int bookCoverId, DateTime? createDate)
+        public Book(string title, int bookLanguageId, string ıSBN, string pageNumber, int publicationDate, int categoryId, int authorId, int bookCoverId, DateTime? createDate, string? floor, string? locationData)
         {
             Title = title;
             BookLanguageId = bookLanguageId;
@@ -23,9 +24,11 @@ namespace Library.Entity.Entities
             AuthorId = authorId;
             BookCoverId = bookCoverId;
             CreateDate = createDate;
+            Floor = floor;
+            LocationInformation = locationData;
         }
 
-		public Book(int id, string title, int bookLanguageId, string ıSBN, string pageNumber, int publicationDate, int categoryId, int authorId, int bookCoverId, DateTime? createDate)
+		public Book(int id, string title, int bookLanguageId, string ıSBN, string pageNumber, int publicationDate, int categoryId, int authorId, int bookCoverId, DateTime? createDate, string? floor, string? locationData)
 		{
             Id = id;
 			Title = title;
@@ -37,6 +40,8 @@ namespace Library.Entity.Entities
 			AuthorId = authorId;
 			BookCoverId = bookCoverId;
 			CreateDate = createDate;
+            Floor = floor;
+            LocationInformation = locationData;
 		}
 
 		public string Title { get; set; }
@@ -52,5 +57,7 @@ namespace Library.Entity.Entities
         public int BookCoverId { get; set; }
         public BookCover BookCover { get; set; }
 		public Nullable<System.DateTime> CreateDate { get; set; }
+        public string? Floor { get; set; }
+        public string? LocationInformation { get; set; }
     }
 }

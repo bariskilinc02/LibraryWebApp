@@ -14,7 +14,7 @@
     <div class="container-fluid ">
 
         <div class="centered_container">
-            <div class="library_header">Medeniyet</div>
+            <a href="@Url.Action("Index")" class="library_header">Medeniyet</a>
             <div class="d-flex navbar_right_outcontainer snap_navbar_content">
                 <ul id="navbar_buttons_parent" class="navbar_right_container_row on_closed_bar_button_container_status">
                     @{
@@ -36,9 +36,9 @@
                         }
                     }
                  
-                    <li class="nav-item navbar_button_outline">
+             @*        <li class="nav-item navbar_button_outline">
                         <a class="navbar_button_content navbar_button">T</a>
-                    </li>
+                    </li> *@
 
                 </ul>
             </div>
@@ -56,14 +56,14 @@
                     <span class="text"><i class="fa-solid fa-door-open fa-2x"></i> </span>
                     <span> Sign out</span>
                 </button>
-                <button class=" member_dropdown_element nav-item button-57" role="button" onclick="Logout()">
+                <button class=" member_dropdown_element nav-item button-57" role="button" onclick="location.href='@Url.Action("FavoriteBooks", "Home")';return false;">
                     <span class="text"><i class="fa-solid fa-book fa-2x"></i></span>
                     <span> Your Books</span>
                 </button>
-                <button class=" member_dropdown_element nav-item button-57" role="button" onclick="Logout()">
+@*                 <button class=" member_dropdown_element nav-item button-57" role="button" onclick="Logout()">
                     <span class="text"> <i class="fa-solid fa-user fa-2x"></i></span>
                     <span> Your Account</span>
-                </button>
+                </button> *@
            
                
             </div>

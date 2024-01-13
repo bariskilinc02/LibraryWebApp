@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.Entity.DTOs.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,11 +12,11 @@ namespace LibraryWebApp.Models
     {
         [Required]
         [DisplayName("Name")]
-        public string Name {  get; set; }
+        public string Name { get; set; }
 
         [Required]
         [DisplayName("Surname")]
-        public string Surname{ get; set; }
+        public string Surname { get; set; }
 
         [Required]
         [DisplayName("Phone")]
@@ -32,8 +33,21 @@ namespace LibraryWebApp.Models
 
         [Required]
         [DisplayName("RePassword")]
-        [Compare("Password", ErrorMessage ="Sifre Uyusmuyor.")]
+        [Compare("Password", ErrorMessage = "Sifre Uyusmuyor.")]
         public string RePassword { get; set; }
 
+
+        public int RoleId { get; set; }
+        public List<RoleDto> GetAllRoles()
+        {
+			List<RoleDto> AllRoles = new List<RoleDto>
+			{
+				new RoleDto { Id = 1, RoleName = "Super Admin" },
+				new RoleDto { Id = 2, RoleName = "Admin" },
+				new RoleDto { Id = 3, RoleName = "User" }
+			};
+			return AllRoles;
+
+		}
     }
 }

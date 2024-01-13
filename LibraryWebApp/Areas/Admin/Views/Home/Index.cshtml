@@ -1,7 +1,7 @@
 ﻿@model AppUser
 
 
-@if (Model?.Email == null || string.IsNullOrEmpty(Model.Email))
+@if (Model?.Email == null || string.IsNullOrEmpty(Model.Email) || Model?.AppRoleId == 3)
 {
     <section class="w-100 p-4 d-flex justify-content-center pb-4" style="margin-top:100px;">
         <form asp-controller="Home" asp-action="AdminLogin" style="width: 22rem;">
@@ -49,6 +49,11 @@ else
         @Html.ActionLink("Edit Books", "EditBooks", "Edit", null, new { @class = "nav-link admin-button" })
         @Html.ActionLink("Add Book", "AddBook", "Edit", null, new { @class = "nav-link admin-button" })
         @Html.ActionLink("Edit Properties", "DatabaseProperties", "Edit", null, new { @class = "nav-link admin-button" })
+
+        @if (Model.AppRoleId == 1)
+        {
+            @Html.ActionLink("Add User", "AddNewUser", "Home", null, new { @class = "nav-link admin-button" })
+        }
     </div>
   
 

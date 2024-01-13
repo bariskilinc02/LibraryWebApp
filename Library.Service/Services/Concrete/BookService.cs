@@ -66,7 +66,7 @@ namespace Library.Service.Services.Concrete
 
         public async Task<BookDto> GetBookWithId(int id)
         {
-            Book book = await unitOfWork.GetRepository<Book>().GetAsync(x => x.Id == id);
+            Book book = await unitOfWork.GetRepository<Book>().GetAsync(x => x.Id == id, x => x.Category, x => x.Author, x => x.BookCover);
             var map = mapper.Map<BookDto>(book);
             return map;
         }
@@ -93,7 +93,7 @@ namespace Library.Service.Services.Concrete
             var books = await SearchAnyBook(keyword, bookFieldType);
             var boundedBooks = books.OrderBy(a => a.Title).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
 
-			int totalPageCount = (int)(books.Count() / pageSize);
+			int totalPageCount = (int)Math.Ceiling((decimal)((float)books.Count() / (float)pageSize));
 
 			return new BookListDto
             {
@@ -133,7 +133,7 @@ namespace Library.Service.Services.Concrete
 
 
 			Expression<Func<Book, bool>> filter = x => 
-            (x.Title.Contains(keyword))
+            (keyword != null ? x.Title.Contains(keyword): !x.Title.Equals(null))
             && (isIsbn ? x.ISBN.Contains(isbn) : !x.ISBN.Equals(null))
 			&& (isYazar ? x.AuthorId.Equals(newYazarId) : !x.AuthorId.Equals(null))
 			&& (isTarih ? x.PublicationDate.Equals(newTarihId) : !x.PublicationDate.Equals(null))
@@ -154,8 +154,7 @@ namespace Library.Service.Services.Concrete
             var books = map;
 			var boundedBooks = books.OrderBy(a => a.Title).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
 
-			int totalPageCount = (int)(books.Count() / pageSize);
-
+            int totalPageCount = (int)Math.Ceiling((decimal)((float)books.Count() / (float)pageSize)); //(int)(books.Count() / pageSize);
 			return new BookListDto
 			{
 				keyword = keyword,
@@ -205,14 +204,14 @@ namespace Library.Service.Services.Concrete
 
         public async Task CreateBookAsync(AddBookDto bookDto)
         {
-            var newBook = new Book(bookDto.Title, bookDto.BookLanguageId, bookDto.ISBN, bookDto.PageNumber, bookDto.PublicationDate, bookDto.CategoryId, bookDto.AuthorId, bookDto.BookCoverId, bookDto.CreateDate);
+            var newBook = new Book(bookDto.Title, bookDto.BookLanguageId, bookDto.ISBN, bookDto.PageNumber, bookDto.PublicationDate, bookDto.CategoryId, bookDto.AuthorId, bookDto.BookCoverId, bookDto.CreateDate, bookDto.Floor, bookDto.LocationInformation);
             await unitOfWork.GetRepository<Book>().AddAsync(newBook);
             await unitOfWork.SaveAsync();
         }
 
 		public async Task UpdateBookAsync(AddBookDto bookDto)
 		{
-			var newBook = new Book(bookDto.Id,bookDto.Title, bookDto.BookLanguageId, bookDto.ISBN, bookDto.PageNumber, bookDto.PublicationDate, bookDto.CategoryId, bookDto.AuthorId, bookDto.BookCoverId, bookDto.CreateDate);
+			var newBook = new Book(bookDto.Id,bookDto.Title, bookDto.BookLanguageId, bookDto.ISBN, bookDto.PageNumber, bookDto.PublicationDate, bookDto.CategoryId, bookDto.AuthorId, bookDto.BookCoverId, bookDto.CreateDate,bookDto.Floor, bookDto.LocationInformation);
 			await unitOfWork.GetRepository<Book>().UpdateAsync(newBook);
 			await unitOfWork.SaveAsync();
 		}
@@ -260,8 +259,30 @@ namespace Library.Service.Services.Concrete
         }
 
 
+        public async Task<List<FavoriteBook>> GetAllFavoriteBooksWithId(int id)
+        {
 
+            var books = await unitOfWork.GetRepository<FavoriteBook>().GetAllAsync(x =>x.UserId == id, x => x.Book, x => x.User, x => x.Book.Category, x => x.Book.BookCover, x => x.Book.Author, x => x.Book.Language);
+            var map = mapper.Map<List<FavoriteBook>>(books);
+            return map;
+        }
 
+        public async Task AddBookFavoriteBooks(int bookId, int userId)
+        {
+            FavoriteBook favoriteBook = new FavoriteBook();
+
+            favoriteBook.UserId = userId;
+            favoriteBook.BookId = bookId;
+			await unitOfWork.GetRepository<FavoriteBook>().AddAsync(favoriteBook);
+			await unitOfWork.SaveAsync();
+		}
+
+		public async Task DeleteBookFavoriteBooks(int bookId, int userId)
+		{
+			var book = await unitOfWork.GetRepository<FavoriteBook>().GetById(bookId);
+			await unitOfWork.GetRepository<FavoriteBook>().DeleteAsync(book);
+			await unitOfWork.SaveAsync();
+		}
 
 		#endregion
 

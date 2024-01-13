@@ -28,6 +28,8 @@ namespace Library.Entity.DTOs.Book
 		public List<CategoryDto> AllCategories { get; set; }
 		public List<AuthorDto> AllAuthors { get; set; }
 		public List<BookLanguageDto> AllLanguages { get; set; }
+
+		public bool Authanticated { get; set; } = false;
 		//public BookListDto(List<BookDto> books)
 		//{
 		//    this.books = books;

@@ -11,5 +11,10 @@ namespace Library.Entity.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public int? AppRoleId { get; set; }
+        public AppRole AppRole { get; set; }
+
+
     }
 }

@@ -29,6 +29,7 @@ namespace Library.Data.Context
 		public DbSet<Author> Authors { get; set; }
 		public DbSet<BookCover> BookCovers { get; set; }
         public DbSet<BookLanguage> BookLanguages { get; set; }
+        public DbSet<FavoriteBook> FavoriteBooks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

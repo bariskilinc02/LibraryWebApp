@@ -72,7 +72,18 @@ function Logout() {
       
     });
 
+}
 
-        
-    
+function LogoutAdmin() {
+    $.ajax({
+        url: '/Admin/Home/LogoutAdmin',
+        async: true,
+        success: function (data) {
+            
+            // Çıkış işlemi başarılı olduğunda yapılacak işlem
+            window.location.href = "/"; // Tarayıcıyı "Index" sayfasına yönlendir
+        }
+
+    });
+
 }
